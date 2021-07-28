@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from "react-redux";
+import ItemForm from "../ItemForm";
 
-const NavBar = ({setShowLogin, setShowSignup}) => {
+const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const sessionUser = useSelector(state => state.session.user)
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
@@ -28,7 +29,16 @@ const NavBar = ({setShowLogin, setShowSignup}) => {
           </button>
           {showBtns &&
           <div className="navBar__userAuth">
-            {sessionUser ?  <LogoutButton /> :
+            {sessionUser ?
+              <div>
+                <NavLink to="/item-form" exact={true} activeClassName="active"
+                  onClick={() => setShowItemForm(true)}
+                >
+                  Post Item
+                </NavLink>
+                <LogoutButton />
+              </div>
+              :
               <div>
                 <NavLink to='/login' exact={true} activeClassName='active'
                   onClick={()=> setShowLogin(true)}

@@ -7,6 +7,7 @@ import NavBar from './components/NavBar/index';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import ItemForm from './components/ItemForm';
 import { authenticate } from './store/session';
 import Modal from 'react-modal'
 
@@ -14,6 +15,7 @@ Modal.setAppElement("#root")
 function App() {
   const [showLogin, setShowLogin] = useState(true)
   const [showSignup, setShowSignup] = useState(true)
+  const [showItemForm, setShowItemForm] = useState(true)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -31,7 +33,9 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar setShowSignup={setShowSignup}
-              setShowLogin={setShowLogin} />
+              setShowLogin={setShowLogin}
+              setShowItemForm={setShowItemForm}
+              />
       <Switch>
         <Route path='/login' exact={true}>
           <Modal isOpen={showLogin}
@@ -44,6 +48,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <Modal isOpen={showSignup} onRequestClose={()=> setShowSignup(false)}>
             <SignUpForm/>
+          </Modal>
+        </Route>
+        <Route path='/item-form' exact={true}>
+          <Modal isOpen={showItemForm}
+            onRequestClose={()=> {
+              setShowItemForm(false)
+              }}>
+            <ItemForm />
           </Modal>
         </Route>
         <ProtectedRoute path='/users' exact={true} >

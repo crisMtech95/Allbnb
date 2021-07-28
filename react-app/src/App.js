@@ -3,13 +3,17 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/index';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import Modal from 'react-modal'
 
+Modal.setAppElement("#root")
 function App() {
+  const [showLogin, setShowLogin] = useState(true)
+  const [showSignup, setShowSignup] = useState(true)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -26,13 +30,21 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar setShowSignup={setShowSignup}
+              setShowLogin={setShowLogin} />
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <Modal isOpen={showLogin}
+            onRequestClose={()=> {
+              setShowLogin(false)
+              }}>
+            <LoginForm />
+          </Modal>
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <Modal isOpen={showSignup} onRequestClose={()=> setShowSignup(false)}>
+            <SignUpForm/>
+          </Modal>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

@@ -12,6 +12,7 @@ class Review(db.Model):
     postId = db.Column(db.Integer, ForeignKey("posts.id"))
 
     post = db.relationship("Post", back_populates="reviews")
+    user = db.relationship("User", back_populates="reviews")
 
     def to_dict(self):
         return {

@@ -14,7 +14,7 @@ const ItemForm = () => {
   const [lng, setLng] = useState();
   const [content, setContent] = useState();
   const [cate, setCate] = useState();
-  const optionsList = ['Houses','Bikes', 'Games', 'Motorcycles', 'Dresses', 'Tools', 'Party Supplies', 'Camping Gear', 'Fitness Equipment/Spots', 'Others']
+  const optionsList = ['Houses','Bikes', 'Games', 'Motorcycles', 'Tools', 'Party Supplies', 'Camping Gear', 'Fitness Equipment/Spots', 'Others']
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -128,13 +128,13 @@ const ItemForm = () => {
         />
       </div>
       <div>
-        <select value={cate} onChange={(e) => setCate(e)}>
-          {optionsList.map(el => (
-            <option value={el}>{el}</option>
+        <select value={cate} onChange={(e) => setCate(e.target.value)}>
+          {optionsList.map((el, i) => (
+            <option key={i} value={el}>{el}</option>
           ))}
         </select>
       </div>
-        <button type='submit'>Login</button>
+        <button type='submit'>Create Post!</button>
     </form>
   );
 };

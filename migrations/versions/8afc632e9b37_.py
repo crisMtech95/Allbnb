@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 8afc632e9b37
-Revises: 
+Revises:
 Create Date: 2021-07-28 10:00:17.156613
 
 """
@@ -21,7 +21,6 @@ def upgrade():
     op.create_table('categories',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=50), nullable=False),
-    sa.Column('description', sa.String(length=500), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
@@ -41,8 +40,8 @@ def upgrade():
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.Column('lat', sa.Integer(), nullable=False),
-    sa.Column('lng', sa.Integer(), nullable=False),
+    sa.Column('lat', sa.Integer()),
+    sa.Column('lng', sa.Integer()),
     sa.Column('content', sa.String(length=1000), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('categoryId', sa.Integer(), nullable=False),

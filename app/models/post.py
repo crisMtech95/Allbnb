@@ -10,8 +10,8 @@ class Post(db.Model):
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    lat = db.Column(db.Integer, nullable=False)
-    lng = db.Column(db.Integer, nullable=False)
+    lat = db.Column(db.Integer)
+    lng = db.Column(db.Integer)
     content = db.Column(db.String(1000))
     userId = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     categoryId = db.Column(db.Integer, ForeignKey("categories.id"), nullable=False)
@@ -42,7 +42,6 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(500))
 
     post = db.relationship("Post", back_populates="type")
 
@@ -50,7 +49,7 @@ class Category(db.Model):
         return {
             'id': self.id,
             'type': self.type,
-            'description': self.description,
+            'post': [p.to_dict() for p in self.post]
         }
 
 
@@ -58,7 +57,7 @@ class Image(db.Model):
     __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True)
-    imageUrl = db.Column(db.String(50), nullable=False)
+    imageUrl = db.Column(db.String(1000), nullable=False)
     postId = db.Column(db.Integer, ForeignKey("posts.id"), nullable=False)
 
     post = db.relationship("Post", back_populates="image")

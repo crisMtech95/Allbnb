@@ -80,7 +80,7 @@ export const delPostThunk = (post) => async(dispatch) => {
     if (res.ok) {
         const data = await res.json()
         // console.log("RES FROM THE FETCH", res)
-        // console.log("RES FROM THE JSON", data)
+        console.log("RES FROM THE JSON", data)
         dispatch(delPost(data))
         return data
     }

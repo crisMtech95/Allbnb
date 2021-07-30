@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, session
 
-from app.models import Post, Category, Image, db, post
+from app.models import Post, Category, Image, db
 
 posts_routes = Blueprint('posts', __name__)
 
@@ -18,6 +18,14 @@ def user(id):
     print(posts)
     print("-"*40)
     return {"userPosts": [p.to_dict() for p in posts]}
+
+
+@posts_routes.route('', methods=['DELETE'])
+def delPost():
+    post = Post.query.get(request.json['id'])
+    db.session.delete(post)
+    db.session.commit()
+    return {"id": post.to_dict()['id']}
 
 
 @posts_routes.route('', methods=["POST"])

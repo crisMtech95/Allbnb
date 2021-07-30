@@ -19,7 +19,7 @@ class Post(db.Model):
     reviews = db.relationship("Review", back_populates="post")
     user = db.relationship("User", back_populates="post")
     type = db.relationship("Category", back_populates="post")
-    image = db.relationship("Image", back_populates="post")
+    image = db.relationship("Image", cascade="all, delete-orphan", back_populates="post")
     reservation = db.relationship("Reservation", back_populates="post")
 
     def to_dict(self):
@@ -34,6 +34,7 @@ class Post(db.Model):
             'content': self.content,
             'userId': self.userId,
             'categoryId': self.categoryId,
+            'images': [img.to_dict() for img in self.image]
         }
 
 

@@ -4,27 +4,27 @@
     align-items: center;
     width: 100%;
     height: 75px;
-    background-color: rgba(250, 243, 243, 0.2);
+    /* background-color: rgba(250, 243, 243, 0.2); */
+    background-color: transparent;
     margin: 0;
     position: absolute;
 
 }
 .navBar__homeIconLink {
-    width: 200px;
+    width: 220px;
     height: 75px;
 }
 .navBar__homeIcon {
     background-image: url("../../icons/allbnb1.svg");
-    width: 150px;
-    height: 85px;
+    width: 180px;
+    height: 120px;
     background-size: cover;
     background-repeat: no-repeat;
     align-self: center;
     margin-bottom: 25px;
-    margin-left: 30px;
-    /* position: absolute; */
-    /* top: -20px;
-    left: 10px; */
+    position: absolute;
+    top: -30px;
+    left: 10px;
 }
 .navBar__userAuth {
     position: absolute;
@@ -71,21 +71,21 @@
     background-repeat: no-repeat;
 }
 #navBar__searchDiv {
-    /* position: absolute; */
+    position: relative;
     display: flex;
     align-items: center;
     width: 60%;
     height: 50px;
+
 }
 #searchBar {
     border: 0;
     border-radius: 500px;
     color: #000;
     height: 50px;
-    width: 100%;
+    width: 90%;
     padding: 6px 48px;
     text-overflow: ellipsis;
-    /* margin-left: 40px; */
     box-shadow: 0px 0px 20px rgb(189, 186, 186);
 }
 #searchBar:focus {
@@ -98,6 +98,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     -webkit-filter: invert(55%);
-    /* border-radius: 13px; */
-    /* background-color: turquoise; */
+    position: absolute;
+    left: 10px;
+}
+.navBar__userBtns a {
+    padding: 0;
+    margin: 0;
 }

@@ -1,0 +1,26 @@
+/* .homePage__mainContainer {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.homePage__bgImageDiv {
+    background-image: url('../../backgrounds/camp2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    width: 100%;
+    height: 800px;
+}
+/* .homePage__bgImage {
+} */

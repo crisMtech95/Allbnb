@@ -1,6 +1,10 @@
 .mainContainer {
+    margin: 0;
     margin-top: 75px;
 }
 .user__postsBigContainer {
-    
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

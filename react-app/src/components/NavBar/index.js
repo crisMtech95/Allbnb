@@ -30,7 +30,8 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
           {showBtns &&
           <div className="navBar__userAuth">
             {sessionUser ?
-              <div>
+              <div className="navBar__userBtns">
+                <NavLink to={`/users/${sessionUser.id}`}>Profile</NavLink>
                 <NavLink to="/item-form" exact={true} activeClassName="active"
                   onClick={() => setShowItemForm(true)}
                 >

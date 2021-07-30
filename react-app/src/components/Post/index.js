@@ -10,8 +10,6 @@ function Post({ post }) {
     const [showEditMenu, setShowEditMenu] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
-    console.log(sessionUser)
-    console.log(post)
 
     return (
         <div className="post__container">

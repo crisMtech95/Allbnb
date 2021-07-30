@@ -60,12 +60,13 @@ export const addPostThunk = (postInfo) => async(dispatch) => {
 
 export const editPostThunk = (post) => async(dispatch) => {
     const res = await fetch("/api/posts", {
-        method: "PUT",
+        method: "PATCH",
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(post)
     })
     if(res.ok) {
         const data = await res.json()
+        console.log("RESPONSE FRO EDIT", data)
         dispatch(addPost(data))
         return data
     }
@@ -80,7 +81,7 @@ export const delPostThunk = (post) => async(dispatch) => {
     if (res.ok) {
         const data = await res.json()
         // console.log("RES FROM THE FETCH", res)
-        console.log("RES FROM THE JSON", data)
+        // console.log("RES FROM THE JSON", data)
         dispatch(delPost(data))
         return data
     }

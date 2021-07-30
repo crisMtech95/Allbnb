@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Modal from 'react-modal'
+import { editPostThunk } from '../../store/post';
 
 const EditPost = ({ post }) => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(true)
   const [errors, setErrors] = useState([]);
   const [address, setAddress] = useState(post.address);
@@ -14,18 +16,18 @@ const EditPost = ({ post }) => {
   const [lat, setLat] = useState(post.lat);
   const [lng, setLng] = useState(post.lng);
   const [content, setContent] = useState(post.content);
-  const [cate, setCate] = useState(post.cate);
-  const optionsList = ['Houses','Bikes', 'Games', 'Motorcycles', 'Tools', 'Party Supplies', 'Camping Gear', 'Fitness Equipment/Spots', 'Others']
+  // const [cate, setCate] = useState(post.cate);
+  // const optionsList = ['Houses','Bikes', 'Games', 'Motorcycles', 'Tools', 'Party Supplies', 'Camping Gear', 'Fitness Equipment/Spots', 'Others']
   const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
 
-
+  console.log(post)
 
   const onSubmit = async (e) => {
     e.preventDefault();
     let obj = {
+      id: post.id,
       userId: user.id,
-      category: cate,
+      // category: cate,
     //   imageUrl: imageUrl,
       address: address,
       city: city,
@@ -35,7 +37,8 @@ const EditPost = ({ post }) => {
       lng: lng,
       content: content
     }
-    // dispatch(addPostThunk(obj))
+    dispatch(editPostThunk(obj))
+    
   };
 
 
@@ -129,13 +132,13 @@ const EditPost = ({ post }) => {
             onChange={(e)=> setImageUrl(e.target.value)}
             />
         </div> */}
-        <div>
+        {/* <div>
             <select value={cate} onChange={(e) => setCate(e.target.value)}>
             {optionsList.map((el, i) => (
                 <option key={i} value={el}>{el}</option>
             ))}
             </select>
-        </div>
+        </div> */}
             <button type='submit'>Edit Post!</button>
         </form>
     </Modal>

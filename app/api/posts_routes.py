@@ -12,7 +12,7 @@ posts_routes = Blueprint('posts', __name__)
 
 
 @posts_routes.route('/user/<int:id>')
-def user(id):
+def user_posts(id):
     posts = Post.query.filter_by(userId=id).all()
     print("-"*40)
     print(posts)
@@ -21,7 +21,7 @@ def user(id):
 
 
 @posts_routes.route('', methods=['DELETE'])
-def delPost():
+def del_post():
     post = Post.query.get(request.json['id'])
     db.session.delete(post)
     db.session.commit()
@@ -29,7 +29,7 @@ def delPost():
 
 
 @posts_routes.route('', methods=["POST"])
-def getPosts():
+def create_post():
     oldCatClass = Category.query.filter_by(type=request.json['category']).first()
     oldCat = oldCatClass.to_dict()
     newPost = Post(
@@ -51,3 +51,21 @@ def getPosts():
     db.session.add(newImage)
     db.session.commit()
     return newPost.to_dict()
+
+
+@posts_routes.route('', methods=["PATCH"])
+def edit_post():
+    print("-"*40, request.json['id'])
+    newPost = Post.query.get(request.json['id'])
+    print("==============", newPost)
+    newPost.address = request.json['address']
+    newPost.city = request.json['city']
+    newPost.state = request.json['state']
+    newPost.price = request.json['price']
+    newPost.lat = request.json['lat']
+    newPost.lng = request.json['lng']
+    newPost.content = request.json['content']
+   
+    db.session.commit()
+    return newPost.to_dict()
+    # return {"message": "hi"}

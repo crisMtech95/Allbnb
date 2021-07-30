@@ -74,6 +74,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 60%;
     height: 50px;
 
@@ -99,7 +100,7 @@
     background-repeat: no-repeat;
     -webkit-filter: invert(55%);
     position: absolute;
-    left: 10px;
+    left: 40px;
 }
 .navBar__userBtns a {
     padding: 0;

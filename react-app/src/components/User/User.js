@@ -11,7 +11,6 @@ function User() {
   const [userPost, setUserPost] = useState({});
   const { userId }  = useParams();
   const userPosts = useSelector(state => Object.values(state.posts))
-  console.log(userPosts)
 
   useEffect(() => {
     if (!userId) return;

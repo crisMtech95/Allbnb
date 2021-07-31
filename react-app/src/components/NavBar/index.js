@@ -19,6 +19,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
             <div className="navBar__searchIcon"></div>
             <input id="searchBar" value={searchInput} type="search"
                     onChange={(e) => setSearchInput(e.target.value)}
+                    onKeyUp={() => console.log("if key===enter..etc... enter is 13 btw")}
                     placeholder="State, city or town"
                     />
           </div>

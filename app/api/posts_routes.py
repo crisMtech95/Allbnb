@@ -5,21 +5,19 @@ from app.models import Post, Category, Image, db
 posts_routes = Blueprint('posts', __name__)
 
 
-# @posts_routes.route('/')
-# def users():
-#     users = User.query.all()
-#     return {'users': [user.to_dict() for user in users]}
+@posts_routes.route('/<int:id>')
+def users(id):
+    post = Post.query.get(id)
+    return post.to_dict()
 
 
 @posts_routes.route('/user/<int:id>')
 def user_posts(id):
     posts = Post.query.filter_by(userId=id).all()
-    print("-"*40)
-    print(posts)
-    print("-"*40)
     return {"userPosts": [p.to_dict() for p in posts]}
 
 
+# CHECK IF YOU NEED THE / ON THE ROUTE
 @posts_routes.route('', methods=['DELETE'])
 def del_post():
     post = Post.query.get(request.json['id'])
@@ -55,9 +53,7 @@ def create_post():
 
 @posts_routes.route('', methods=["PATCH"])
 def edit_post():
-    print("-"*40, request.json['id'])
     newPost = Post.query.get(request.json['id'])
-    print("==============", newPost)
     newPost.address = request.json['address']
     newPost.city = request.json['city']
     newPost.state = request.json['state']
@@ -65,7 +61,7 @@ def edit_post():
     newPost.lat = request.json['lat']
     newPost.lng = request.json['lng']
     newPost.content = request.json['content']
-   
+
     db.session.commit()
     return newPost.to_dict()
     # return {"message": "hi"}

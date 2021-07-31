@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Post.css'
 import EditPost from '../EditPost';
@@ -25,14 +25,16 @@ function Post({ post }) {
                                     onClick={() => setShowEditModal(!showEditModal)}
                                 >Edit Post</button>
                                 <button onClick={() => dispatch(delPostThunk(post))}>Delete</button>
-                                {showEditModal && <EditPost post={post}/>}
+                                {showEditModal && <EditPost post={post} setShowEditMenu={setShowEditMenu}/>}
                             </div>
                         }
                     </div>
                 }
-                <div className="post__imageDiv">
-                    <img alt="You'll never know" src={post?.images[0]?.imageUrl} className="post__image"/>
-                </div>
+                <Link to={`/posts/${post.id}`}>
+                    <div className="post__imageDiv">
+                        <img alt="You'll never know" src={post?.images[0]?.imageUrl} className="post__image"/>
+                    </div>
+                </Link>
                 <div className="post__contentContainer">
                     <div className="post__h3Div">
                         <h3>{post?.state}</h3>

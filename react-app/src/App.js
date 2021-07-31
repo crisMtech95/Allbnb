@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User/User';
 import ItemForm from './components/ItemForm';
 import HomePage from './components/HomePage';
+import SinglePost from './components/SinglePost';
 import { authenticate } from './store/session';
 import Modal from 'react-modal'
 
@@ -65,6 +66,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path="/posts/:postId">
+              <SinglePost />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
         </ProtectedRoute>

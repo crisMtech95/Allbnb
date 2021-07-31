@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Modal from 'react-modal'
 import { editPostThunk } from '../../store/post';
 
-const EditPost = ({ post }) => {
+const EditPost = ({ post, setShowEditMenu }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(true)
   const [errors, setErrors] = useState([]);
@@ -20,15 +20,12 @@ const EditPost = ({ post }) => {
   // const optionsList = ['Houses','Bikes', 'Games', 'Motorcycles', 'Tools', 'Party Supplies', 'Camping Gear', 'Fitness Equipment/Spots', 'Others']
   const user = useSelector(state => state.session.user);
 
-  console.log(post)
 
   const onSubmit = async (e) => {
     e.preventDefault();
     let obj = {
       id: post.id,
       userId: user.id,
-      // category: cate,
-    //   imageUrl: imageUrl,
       address: address,
       city: city,
       state: state,
@@ -38,7 +35,7 @@ const EditPost = ({ post }) => {
       content: content
     }
     dispatch(editPostThunk(obj))
-    
+    setShowEditMenu(false)
   };
 
 

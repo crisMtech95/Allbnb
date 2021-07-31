@@ -1,0 +1,39 @@
+.SP__mainContainer {
+    margin: 75px;
+    /* width: 100%; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.SP__container {
+    width: 90%;
+}
+.SP__imagesBigCon {
+    display: flex;
+    width: 95%;
+    height: 300px;
+}
+.SP__imageDiv {
+    width: 280px;
+    height: 155px;
+    overflow: hidden;
+}
+.SP__image {
+    background-size: contain;
+    width: 100%;
+}
+.SP__splittingCon {
+    display: flex;
+    justify-content: space-between;
+}
+.SP__infoCon {
+    width: 50%;
+}
+.SP__resFormCon {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

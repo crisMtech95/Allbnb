@@ -34,7 +34,8 @@ class Post(db.Model):
             'content': self.content,
             'userId': self.userId,
             'categoryId': self.categoryId,
-            'images': [img.to_dict() for img in self.image]
+            'images': [img.to_dict() for img in self.image],
+            'reservations': [r.to_dict() for r in self.reservation]
         }
 
 
@@ -75,8 +76,8 @@ class Reservation(db.Model):
     __tablename__ = 'reservations'
 
     id = db.Column(db.Integer, primary_key=True)
-    startTime = db.Column(db.DateTime, nullable=False)
-    endTime = db.Column(db.DateTime, nullable=False)
+    startTime = db.Column(db.String(), nullable=False)
+    endTime = db.Column(db.String(), nullable=False)
     userId = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     postId = db.Column(db.Integer, ForeignKey("posts.id"), nullable=False)
 

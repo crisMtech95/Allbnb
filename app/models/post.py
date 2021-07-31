@@ -35,7 +35,8 @@ class Post(db.Model):
             'userId': self.userId,
             'categoryId': self.categoryId,
             'images': [img.to_dict() for img in self.image],
-            'reservations': [r.to_dict() for r in self.reservation]
+            'reservations': [r.to_dict() for r in self.reservation],
+            'reviews': [r.to_dict() for r in self.reviews]
         }
 
 

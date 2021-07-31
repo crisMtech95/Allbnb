@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReservationForm from '../ReservationForm';
+import { getReservationsThunk } from '../../store/reservations';
+import { getReviewsThunk } from '../../store/reviews';
 import './SinglePost.css'
 
 
@@ -16,6 +18,8 @@ function SinglePost() {
             const res = await fetch(`/api/posts/${postId}`)
             const data = await res.json()
             setPost(data)
+            // dispatch(getReservationsThunk(postId))
+            // dispatch(getReviewsThunk(postId))
         }
 
     }, []);

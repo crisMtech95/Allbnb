@@ -49,10 +49,14 @@
     width: 50%;
 }
 .SP__resFormCon {
-    width: 50%;
+    margin-bottom: 20px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: solid 0.2px grey;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 5px rgb(207, 207, 207);
 }
 .SP__addImgDiv {
     position: absolute;
@@ -76,4 +80,70 @@
     width: 31px;
     height: 34px;
     background-repeat: no-repeat;
+}
+.SP__resBtn {
+    width: 70%;
+    margin: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #15ebb9;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: hover 2s ease-in-out;
+}
+.SP__resBtn:hover {
+    background-color: #17dfb0;
+}
+.SP__imgagesDiv {
+    display: flex;
+    align-items: center;
+}
+#SP__imgsfirstDiv {
+    border-top: 0.5px solid rgb(197, 194, 194);
+}
+.SP__images {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+}
+.SP__stateImg {
+    background-image: url("../../icons/useState.png");
+}
+.SP__addressImg {
+    background-image: url("../../icons/address.png");
+}
+.SP__contentImg {
+    background-image: url("../../icons/content.png");
+}
+.SP__reviewsMainCon {
+    width: 100%;
+    border-top: 0.5px solid rgb(197, 194, 194);
+    height: auto;
+}
+.SP__reviewH2Div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.SP__reviewFormDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.SP__reviewFormDiv2 {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.SP__reviewTextA {
+    width: 100%;
+    border-radius: 6px;
 }

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8afc632e9b37
-Revises:
-Create Date: 2021-07-28 10:00:17.156613
+Revision ID: a86bf9c46ac0
+Revises: 
+Create Date: 2021-07-31 15:29:45.032535
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8afc632e9b37'
+revision = 'a86bf9c46ac0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,12 +36,13 @@ def upgrade():
     )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(length=200), nullable=False),
     sa.Column('address', sa.String(length=50), nullable=False),
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.Column('lat', sa.Integer()),
-    sa.Column('lng', sa.Integer()),
+    sa.Column('lat', sa.Integer(), nullable=True),
+    sa.Column('lng', sa.Integer(), nullable=True),
     sa.Column('content', sa.String(length=1000), nullable=True),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('categoryId', sa.Integer(), nullable=False),
@@ -51,15 +52,15 @@ def upgrade():
     )
     op.create_table('images',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('imageUrl', sa.String(length=50), nullable=False),
+    sa.Column('imageUrl', sa.String(length=1000), nullable=False),
     sa.Column('postId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('reservations',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('startTime', sa.DateTime(), nullable=False),
-    sa.Column('endTime', sa.DateTime(), nullable=False),
+    sa.Column('startTime', sa.String(), nullable=False),
+    sa.Column('endTime', sa.String(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('postId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),

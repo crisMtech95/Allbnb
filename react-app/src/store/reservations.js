@@ -27,6 +27,8 @@ export const getReservationsThunk = (id) => async(dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
+        console.log("THIS IS RES", res)
+        console.log("THIS IS DATA", data)
         dispatch(getPostRes(data));
         return data
     }
@@ -81,6 +83,7 @@ export default function reservationReducer (state = initialState, action) {
     switch(action.type) {
         case GET_POSTRESERVATIONS:
             action.payload.reservations.forEach(el => {
+                console.log(el.id, el)
                 newState[el.id] = el
             })
             return {...state, ...newState}

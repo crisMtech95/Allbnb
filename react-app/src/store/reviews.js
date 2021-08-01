@@ -1,6 +1,6 @@
-const GET_POSTREVIEWS = "get/postReservations"
-const ADD_REVIEW = "add/reservation"
-const DEL_REVIEW = "del/reservation"
+const GET_POSTREVIEWS = "get/postReviews"
+const ADD_REVIEW = "add/review"
+const DEL_REVIEW = "del/review"
 
 
 export const getPostReviews = (payload) => {

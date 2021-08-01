@@ -4,43 +4,43 @@ from app.models import db, Post
 # Adds a demo user, you can add other users here if you want
 def seed_posts():
     post1 = Post(
-        userId=1, categoryId=1, address="1234 random Ave",
+        userId=1, categoryId=1, address="1234 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="elmhurst", state="New York", price=100, lat=123, lng=542,
         content="So this is the description for this random content")
     post2 = Post(
-        userId=1, categoryId=1, address="1234 random Ave",
+        userId=1, categoryId=1, address="1234 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="elmhurst", state="New York", price=130, lat=123, lng=542,
         content="So this is the description for this random content")
     post3 = Post(
-        userId=1, categoryId=2, address="1234 random Ave",
+        userId=1, categoryId=2, address="1234 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="elmhurst", state="New York", price=120, lat=123, lng=542,
         content="So this is the description for this random content")
     post4 = Post(
-        userId=1, categoryId=2, address="1234 random Ave",
+        userId=1, categoryId=2, address="1234 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="elmhurst", state="New York", price=107, lat=123, lng=542,
         content="So this is the description for this random content")
     post5 = Post(
-        userId=2, categoryId=1, address="5432 random Ave",
+        userId=2, categoryId=1, address="5432 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="Los Angeles", state="California", price=210, lat=123, lng=542,
         content="So this is the description for this random content")
     post6 = Post(
-        userId=2, categoryId=2, address="5432 random Ave",
-        city="Los Angeles", state="California", price=450, lat=123,lng=542,
+        userId=2, categoryId=2, address="5432 random Ave", title="Great House, in a good area, 2 bedrooms",
+        city="Los Angeles", state="California", price=450, lat=123, lng=542,
         content="So this is the description for this random content")
     post7 = Post(
-        userId=2, categoryId=3, address="5432 random Ave",
+        userId=2, categoryId=3, address="5432 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="Los Angeles", state="California", price=650, lat=123, lng=542,
         content="So this is the description for this random content")
     post8 = Post(
-        userId=3, categoryId=1, address="8955 random Ave",
+        userId=3, categoryId=1, address="8955 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="Miami", state="Florida", price=450, lat=123, lng=542,
         content="So this is the description for this random content")
     post9 = Post(
-        userId=3, categoryId=2, address="8955 random Ave",
+        userId=3, categoryId=2, address="8955 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="Miami", state="Florida", price=780, lat=123, lng=542,
         content="So this is the description for this random content")
     post10 = Post(
-        userId=3, categoryId=3, address="8955 random Ave",
+        userId=3, categoryId=3, address="8955 random Ave", title="Great House, in a good area, 2 bedrooms",
         city="Miami", state="Florida", price=970, lat=123, lng=542,
         content="So this is the description for this random content")
 

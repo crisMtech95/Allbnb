@@ -30,7 +30,7 @@ function ReservationForm() {
             showWeekNumbers={true}
             onChange={setDate}
             value={date}
-            selectRange={"range"}
+            selectRange={true}
             // tileDisabled={()=> console.log("funtion to disable dates here!!")}
             minDate={new Date()}
             // formatLongDate={(locale, date) => formatDate(date, 'dd MMM YYYY')}

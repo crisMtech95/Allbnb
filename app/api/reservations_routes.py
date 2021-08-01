@@ -8,6 +8,9 @@ reservations_routes = Blueprint('reservations', __name__)
 @reservations_routes.route("/<int:id>")
 def getPostRes(id):
     reservations = Reservation.query.filter_by(postId=id).all()
+    # print("*"*40)
+    # print([r.to_dict() for r in reservations])
+    # print("*"*40)
     return {"reservations": [r.to_dict() for r in reservations]}
 
 

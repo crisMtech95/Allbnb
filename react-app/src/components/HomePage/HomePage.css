@@ -17,10 +17,9 @@
 .homePage__bgImageDiv {
     background-image: url('../../backgrounds/bike.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     width: 100%;
-    width: 100%;
-    height: 800px;
+    height: 80vh;
 }
 /* .homePage__bgImage {
 } */

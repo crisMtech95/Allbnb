@@ -69,9 +69,9 @@ function App() {
         <Route path="/posts/:postId">
               <SinglePost />
         </Route>
-        <ProtectedRoute path='/' exact={true} >
-          <HomePage />
-        </ProtectedRoute>
+        <Route  path='/' exact={true}>
+            <HomePage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

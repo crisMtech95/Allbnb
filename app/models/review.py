@@ -7,7 +7,7 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(500), nullable=False)
-    stars = db.Column(db.Numeric(10, 2))
+    stars = db.Column(db.Integer)
     userId = db.Column(db.Integer, ForeignKey("users.id"))
     postId = db.Column(db.Integer, ForeignKey("posts.id"))
 

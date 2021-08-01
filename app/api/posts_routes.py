@@ -17,6 +17,25 @@ def user_posts(id):
     return {"userPosts": [p.to_dict() for p in posts]}
 
 
+@posts_routes.route("/image", methods=["POST"])
+def newImage():
+    newImg = Image(
+        imageUrl=request.json['imageUrl'],
+        postId=request.json['postId']
+    )
+    db.session.add(newImg)
+    db.session.commit()
+    return newImg.to_dict()
+
+
+@posts_routes.route('/image', methods=['DELETE'])
+def del_img():
+    img = Image.query.get(request.json['id'])
+    db.session.delete(img)
+    db.session.commit()
+    return {"id": img.to_dict()['id']}
+
+
 # CHECK IF YOU NEED THE / ON THE ROUTE
 @posts_routes.route('', methods=['DELETE'])
 def del_post():

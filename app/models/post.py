@@ -2,10 +2,12 @@ from sqlalchemy.sql.schema import ForeignKey
 from .db import db
 
 
+
 class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
     address = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
@@ -25,6 +27,7 @@ class Post(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'title': self.title,
             'address': self.address,
             'city': self.city,
             'state': self.state,

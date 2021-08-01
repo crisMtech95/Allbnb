@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { addPostThunk } from '../../store/post'
+import Modal from "react-modal"
 
-const ItemForm = () => {
+const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
   const [errors, setErrors] = useState([]);
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
@@ -37,105 +38,110 @@ const ItemForm = () => {
     dispatch(addPostThunk(obj))
   };
 
-
-
   if (!user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>Address</label>
-        <input
-          name='Address'
-          type='text'
-          placeholder='Address'
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>City</label>
-        <input
-          name='City'
-          type='text'
-          placeholder='City'
-          value={city}
-          onChange={(e)=> setCity(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>State</label>
-        <input
-          name='State'
-          type='text'
-          placeholder='State'
-          value={state}
-          onChange={(e)=> setState(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Price</label>
-        <input
-          name='Price'
-          placeholder='Price'
-          value={price}
-          onChange={(e)=> setPrice(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Latitude</label>
-        <input
-          name='Latitude'
-          placeholder='Latitude'
-          value={lat}
-          onChange={(e)=> setLat(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Longitude</label>
-        <input
-          name='Longitude'
-          placeholder='Longitude'
-          value={lng}
-          onChange={(e)=> setLng(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Content</label>
-        <input
-          name='Content'
-          type='text'
-          placeholder='Content'
-          value={content}
-          onChange={(e)=> setContent(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Image Url</label>
-        <input
-          name='Image-Url'
-          type='text'
-          placeholder='Image Url'
-          value={imageUrl}
-          onChange={(e)=> setImageUrl(e.target.value)}
-        />
-      </div>
-      <div>
-        <select value={cate} onChange={(e) => setCate(e.target.value)}>
-          {optionsList.map((el, i) => (
-            <option key={i} value={el}>{el}</option>
+    <Modal isOpen={showItemForm}
+           style={customModalStyles}
+           onRequestClose={()=> {
+              setShowItemForm(false)
+              }}>
+
+      <form onSubmit={onSubmit}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
           ))}
-        </select>
-      </div>
-        <button type='submit'>Create Post!</button>
-    </form>
+        </div>
+        <div>
+          <label>Address</label>
+          <input
+            name='Address'
+            type='text'
+            placeholder='Address'
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>City</label>
+          <input
+            name='City'
+            type='text'
+            placeholder='City'
+            value={city}
+            onChange={(e)=> setCity(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>State</label>
+          <input
+            name='State'
+            type='text'
+            placeholder='State'
+            value={state}
+            onChange={(e)=> setState(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Price</label>
+          <input
+            name='Price'
+            placeholder='Price'
+            value={price}
+            onChange={(e)=> setPrice(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Latitude</label>
+          <input
+            name='Latitude'
+            placeholder='Latitude'
+            value={lat}
+            onChange={(e)=> setLat(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Longitude</label>
+          <input
+            name='Longitude'
+            placeholder='Longitude'
+            value={lng}
+            onChange={(e)=> setLng(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Content</label>
+          <input
+            name='Content'
+            type='text'
+            placeholder='Content'
+            value={content}
+            onChange={(e)=> setContent(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Image Url</label>
+          <input
+            name='Image-Url'
+            type='text'
+            placeholder='Image Url'
+            value={imageUrl}
+            onChange={(e)=> setImageUrl(e.target.value)}
+          />
+        </div>
+        <div>
+          <select value={cate} onChange={(e) => setCate(e.target.value)}>
+            {optionsList.map((el, i) => (
+              <option key={i} value={el}>{el}</option>
+            ))}
+          </select>
+        </div>
+          <button type='submit'>Create Post!</button>
+      </form>
+    </Modal>
   );
 };
 

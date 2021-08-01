@@ -1,12 +1,13 @@
 import "./NavBar.css"
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 
+
 const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
@@ -37,43 +38,47 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
           <div className="navBar__userAuth">
             {sessionUser ?
               <div className="navBar__userLinkDiv">
-                <NavLink to={`/users/${sessionUser.id}`}
-                  onClick={()=> setShowBtns(false)}
-                >Profile</NavLink>
-                <NavLink to="/item-form" exact={true} activeClassName="active"
+                <button
+                  onClick={()=> {
+                    setShowBtns(false)
+                    history.push(`/users/${sessionUser.id}`)
+                  }}
+                >Profile</button>
+                <button
                   onClick={() => {
                     setShowItemForm(true)
                     setShowBtns(false)
                   }}
                 >
                   Post Item
-                </NavLink>
+                </button>
                 {/* <LogoutButton /> */}
-                <NavLink to="/"
+                <button to="/"
                   onClick={()=> {
+                    history.push("/")
                     setShowBtns(false)
                     dispatch(logout())
                   }}
-                >Log out</NavLink>
+                >Log out</button>
               </div>
               :
               <div className="navBar__userLinkDiv">
-                <NavLink to='/login' exact={true} activeClassName='active'
+                <button
                   onClick={()=> {
                     setShowLogin(true)
                     setShowBtns(false)
                   }}
                 >
                   Login
-                </NavLink>
-                <NavLink to='/sign-up' exact={true} activeClassName='active'
+                </button>
+                <button
                   onClick={()=> {
                     setShowSignup(true)
                     setShowBtns(false)
                   }}
                 >
                   Sign Up
-                </NavLink>
+                </button>
               </div>
             }
           </div>

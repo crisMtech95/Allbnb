@@ -31,29 +31,30 @@
     position: absolute;
     right: 35px;
     top: 50px;
-    width: 130px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
 }
-.navBar__userAuth a {
-    text-decoration: none;
+.navBar__userAuth button {
+    width: 100%;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
-    height: 20px;
+    height: 30px;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     background-color: transparent;
     cursor: pointer;
     padding: 8px 34px;
     font-size: 14px;
     overflow: hidden;
 }
-.navBar__userAuth a:hover {
+.navBar__userAuth button:hover {
     background-color: rgb(243, 242, 242);
 }
 .navBar__userIconBtn {

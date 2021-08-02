@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from 'react-rating-stars-component'
@@ -8,12 +8,16 @@ import { delReviewThunk, editReviewThunk } from '../../store/reviews'
 
 function Review({ review }) {
     const dispatch = useDispatch()
+    const focusTextarea = useRef();
     const [showEditReview, setShowEditReview] = useState(false)
     const [showEditBtn, setShowEditBtn] = useState(false)
     const [comment, setComment] = useState(review.comment)
     const [stars, setStars] = useState(review.stars)
     const sessionUser = useSelector(state =>  state.session.user)
 
+    useEffect(() => {
+        if(focusTextarea.current) focusTextarea.current.focus();
+       }, [focusTextarea, showEditBtn]);
 
     return (
     <div className="review__container">
@@ -49,6 +53,7 @@ function Review({ review }) {
             // isHalf={true}
         ></ReactStars>
         <textarea className="review__commentTextArea"
+            ref={focusTextarea}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             disabled={!showEditBtn}

@@ -23,7 +23,7 @@ function App() {
 
   const customModalStyles = {
     content: {
-      
+
       top: '50%',
       left: '50%',
       right: 'auto',
@@ -57,9 +57,9 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <Route path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </Route>
         <Route path="/posts/:postId">
               <SinglePost />
         </Route>

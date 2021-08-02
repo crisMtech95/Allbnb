@@ -9,7 +9,7 @@ import 'react-calendar/dist/Calendar.css';
 function ReservationForm() {
     const dispatch = useDispatch()
     const [date, setDate] = useState();
-    console.log(date)
+    // console.log(date)
 
     const formattingDates = (newDate) => {
         var dd = String(newDate.getDate()).padStart(2, '0');
@@ -19,9 +19,9 @@ function ReservationForm() {
         return newDate
     }
 
-    date?.forEach(el => {
-        console.log(formattingDates(el))
-    })
+    // date?.forEach(el => {
+    //     console.log(formattingDates(el))
+    // })
 
 
     return (

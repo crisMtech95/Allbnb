@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   session,
   posts,
   reservations,
-  reviews
+  reviews,
 });
 
 

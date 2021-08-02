@@ -15,22 +15,23 @@ function SinglePost() {
     const [starsCount, setStarsCount] = useState(0)
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
+    const postsList = useSelector(state => Object.values(state.posts))
     // const reservationsList = useSelector(state => Object.values(state.reservation))
     const { postId }  = useParams();
-    const [post, setPost] = useState("")
+    // const [post, setPost] = useState("")
+    const post = postsList.find(p => p.id == postId)
     const [comment, setComment] = useState("")
-    // console.log("AMOUNT OF STARS SELECTED", starsCount)
-    // console.log(post)
-    useEffect(async() => {
-        if (postId) {
-            const res = await fetch(`/api/posts/${postId}`)
-            const data = await res.json()
-            setPost(data)
-            // dispatch(getReservationsThunk(postId))
-            dispatch(getReviewsThunk(postId))
-        }
 
-    }, []);
+    useEffect(async() => {
+        // if (postId) {
+        //     const res = await fetch(`/api/posts/${postId}`)
+        //     const data = await res.json()
+        //     setPost(data)
+        // }
+        dispatch(getReviewsThunk(postId))
+        // dispatch(getReservationsThunk(postId))
+
+    }, [dispatch]);
 
 
     useEffect(() => {

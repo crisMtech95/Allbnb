@@ -147,3 +147,8 @@
     width: 100%;
     border-radius: 6px;
 }
+.SP__reviewContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 60%;
+}

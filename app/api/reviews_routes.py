@@ -11,7 +11,7 @@ def getPostRev(id):
     return {"reviews": [r.to_dict() for r in reviews]}
 
 
-@reviews_routes.route("/", methods=["POST"])
+@reviews_routes.route("", methods=["POST"])
 def createRev():
     newRev = Review(
         userId=request.json['userId'],
@@ -24,7 +24,7 @@ def createRev():
     return newRev.to_dict()
 
 
-@reviews_routes.route("/", methods=["PATCH"])
+@reviews_routes.route("", methods=["PATCH"])
 def editRev():
     rev = Review.query.get(request.json['id'])
     rev.comment = request.json['comment']
@@ -34,7 +34,7 @@ def editRev():
     return rev.to_dict()
 
 
-@reviews_routes.route("/", methods=["DELETE"])
+@reviews_routes.route("", methods=["DELETE"])
 def delRev():
     rev = Review.query.get(request.json['id'])
     db.session.delete(rev)

@@ -7,15 +7,19 @@ import { getReviewsThunk } from '../../store/reviews';
 import Review from '../Review'
 import './SinglePost.css'
 import Map from '../Map';
+import ReactStars from 'react-rating-stars-component';
+import { addReviewThunk } from '../../store/reviews'
 
 function SinglePost() {
     const dispatch = useDispatch()
+    const [starsCount, setStarsCount] = useState(0)
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
     // const reservationsList = useSelector(state => Object.values(state.reservation))
     const { postId }  = useParams();
     const [post, setPost] = useState("")
-
+    const [comment, setComment] = useState("")
+    // console.log("AMOUNT OF STARS SELECTED", starsCount)
     // console.log(post)
     useEffect(async() => {
         if (postId) {
@@ -29,6 +33,9 @@ function SinglePost() {
     }, []);
 
 
+    useEffect(() => {
+        console.log(starsCount)
+    }, [starsCount])
 
     return (
     <div className="SP__mainContainer">
@@ -80,13 +87,35 @@ function SinglePost() {
                 </div>
                 <div className="SP__reviewFormDiv">
                 <div className="SP__reviewFormDiv2">
-                    <textarea className="SP__reviewTextA">
-
+                    <ReactStars
+                        count={5}
+                        size={30}
+                        edit={true}
+                        value={starsCount}
+                        onChange={(newRating) => {
+                            setStarsCount(newRating)
+                        }}
+                    />
+                    <textarea
+                        className="SP__reviewTextA"
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                        >
                     </textarea>
-                    <button>Leave a Review!</button>
+                    <button
+                        onClick={() => {
+                            dispatch(addReviewThunk({
+                                "userId": sessionUser.id,
+                                "postId": post.id,
+                                "comment": comment,
+                                "stars": starsCount}))
+                            setStarsCount(0)
+                            setComment("")
+                            }}
+                    >Leave a Review!</button>
                 </div>
                 </div>
-                <div>
+                <div className="SP__reviewContainer">
                     {reviewsList?.map(el => (
                         <Review key={el.id} review={el}/>
                     ))}

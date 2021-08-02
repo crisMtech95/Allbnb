@@ -83,7 +83,7 @@ export default function reviewsReducer (state = initialState, action) {
             })
             return {...state, ...newState}
         case ADD_REVIEW:
-            newState = {...state, [action.payload.id]: action.payload}
+            newState = {[action.payload.id]: action.payload, ...state}
             return newState
         case DEL_REVIEW:
             newState = {...state}

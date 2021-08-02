@@ -1,0 +1,36 @@
+.review__container {
+    width: 100%;
+    position: relative;
+}
+.review__editForm {
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    z-index: 20;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.review__editForm button {
+    border: none;
+    padding: 4px;
+}
+.review__commentTextArea {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height:inherit;
+    flex-wrap: nowrap;
+    /* overflow-y: hidden; */
+    resize: none;
+    box-sizing: border-box;
+    display:block;
+}
+.review__submitDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

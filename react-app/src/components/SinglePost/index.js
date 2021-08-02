@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReservationForm from '../ReservationForm';
 import { getReservationsThunk } from '../../store/reservations';
 import { getReviewsThunk } from '../../store/reviews';
+import { getSinglePostThunk } from '../../store/post';
 import Review from '../Review'
 import './SinglePost.css'
 import Map from '../Map';
@@ -19,24 +20,17 @@ function SinglePost() {
     // const reservationsList = useSelector(state => Object.values(state.reservation))
     const { postId }  = useParams();
     // const [post, setPost] = useState("")
-    const post = postsList.find(p => p.id == postId)
+    let post = postsList[postId]
     const [comment, setComment] = useState("")
-
-    useEffect(async() => {
-        // if (postId) {
-        //     const res = await fetch(`/api/posts/${postId}`)
-        //     const data = await res.json()
-        //     setPost(data)
-        // }
-        dispatch(getReviewsThunk(postId))
-        // dispatch(getReservationsThunk(postId))
-
-    }, [dispatch]);
-
-
-    useEffect(() => {
-        console.log(starsCount)
-    }, [starsCount])
+    // console.log("AMOUNT OF STARS SELECTED", starsCount)
+    // console.log(post)
+    // useEffect(() => {
+    //     if (sessionUser) {
+    //         dispatch(getReviewsThunk(postId))
+    //         dispatch(getReservationsThunk(postId))
+    //         dispatch(getSinglePostThunk(postId))
+    //     }
+    // }, [sessionUser]);
 
     return (
     <div className="SP__mainContainer">
@@ -123,7 +117,6 @@ function SinglePost() {
                 </div>
             </div>
                 <Map />
-
         </div>
     </div>
     );

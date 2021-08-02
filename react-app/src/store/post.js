@@ -1,4 +1,5 @@
 const GET_POSTS = "get/posts"
+const GET_ONEPOST = "get/onePost"
 const GET_USERPOSTS = "get/usersposts"
 const ADD_POST = "add/post"
 const DEL_POST = "del/post"
@@ -7,6 +8,12 @@ const GET_POST = "get/post"
 export const getPosts = (payload) => {
     return {
         type: GET_POSTS,
+        payload
+    }
+}
+export const getOnePosts = (payload) => {
+    return {
+        type: GET_ONEPOST,
         payload
     }
 }
@@ -35,6 +42,15 @@ export const getOnePost = (payload) => {
     }
 }
 
+export const getSinglePostThunk = (id) => async(dispatch) => {
+    const res = await fetch(`/api/posts/${id}`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getOnePosts(data));
+        return data
+    }
+}
 export const getUserPostsThunk = (id) => async(dispatch) => {
     const res = await fetch(`/api/posts/user/${id}`);
 
@@ -93,6 +109,10 @@ let initialState = {}
 export default function postReducer (state = initialState, action) {
     let newState = {};
     switch(action.type) {
+        // case GET_ONEPOST:
+        //     const newState = Object.assign({}, state)
+        //     newState[action.payload.id] = action.payload
+        //     return newState
         case GET_USERPOSTS:
             action.payload.userPosts.forEach(el => {
                 newState[el.id] = el

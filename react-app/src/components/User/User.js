@@ -8,7 +8,7 @@ import Post from '../Post';
 function User() {
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
-  const [userPost, setUserPost] = useState({});
+  // const [userPost, setUserPost] = useState({});
   const { userId }  = useParams();
   const userPosts = useSelector(state => Object.values(state.posts))
 

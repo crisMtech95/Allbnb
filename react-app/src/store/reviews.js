@@ -90,6 +90,6 @@ export default function reviewsReducer (state = initialState, action) {
             delete newState[action.payload.id]
             return newState
         default:
-            return newState
+            return {...state}
     }
 }

@@ -2,15 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import  Calendar from 'react-calendar'
+import { getReservationsThunk, addResThunk } from '../../store/reservations'
 import './ReservationForm.css'
 import 'react-calendar/dist/Calendar.css';
-import { addResThunk } from '../../store/reservations'
+
 
 function ReservationForm({ postId }) {
     const dispatch = useDispatch()
     const [date, setDate] = useState();
     const sessionUser = useSelector(state => state.session.user)
     const reservations = useSelector(state => Object.values(state.reservations))
+
+    // useEffect(() => {
+    //     dispatch(getReservationsThunk(postId))
+    // }, [dispatch])
 
     const fillDate = (startDay, endDay) => {
         if (endDay < startDay) return;

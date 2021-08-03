@@ -28,9 +28,9 @@ const LoginForm = ({ showLogin, setShowLogin, customModalStyles }) => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <Modal isOpen={showLogin}

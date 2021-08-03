@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserPostsThunk } from '../../store/post'
+// import { getReviewsThunk } from '../../store/reviews';
 import './User.css'
 import Post from '../Post';
 
@@ -13,11 +14,12 @@ function User() {
   const userPosts = useSelector(state => Object.values(state.posts))
 
   useEffect(() => {
-    if (!userId) return;
+    // if (!userId) return;
 
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       dispatch(getUserPostsThunk(userId))
+      // dispatch(getReviewsThunk({"postId": 1}))
       const user = await response.json();
       setUser(user);
     })();

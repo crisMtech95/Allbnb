@@ -39,9 +39,9 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
     setRepeatPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <Modal

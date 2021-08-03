@@ -109,10 +109,10 @@ let initialState = {}
 export default function postReducer (state = initialState, action) {
     let newState = {};
     switch(action.type) {
-        // case GET_ONEPOST:
-        //     const newState = Object.assign({}, state)
-        //     newState[action.payload.id] = action.payload
-        //     return newState
+        case GET_ONEPOST:
+            newState = {...state}
+            newState[action.payload.id] = action.payload
+            return newState
         case GET_USERPOSTS:
             action.payload.userPosts.forEach(el => {
                 newState[el.id] = el

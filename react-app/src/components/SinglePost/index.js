@@ -17,26 +17,18 @@ function SinglePost() {
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
     const postsList = useSelector(state => Object.values(state.posts))
-    const reservationsList = useSelector(state => state.reservation)
     const { postId }  = useParams();
-    // const [post, setPost] = useState("")
-    let post = postsList[postId]
+    const [post, setPost] = useState()
     const [comment, setComment] = useState("")
-    // console.log("AMOUNT OF STARS SELECTED", starsCount)
-    // console.log(post)
+
+
     useEffect(() => {
-        // if (sessionUser) {
             console.log("LOADED SINGLE POST")
             dispatch(getSinglePostThunk(postId))
-
-
+            setPost(postsList[postId])
             dispatch(getReservationsThunk(postId))
-            // }
+            dispatch(getReviewsThunk(postId))
         }, []);
-    useEffect(() => {
-        dispatch(getReviewsThunk(postId))
-
-    }, [reservationsList])
 
     return (
     <div className="SP__mainContainer">

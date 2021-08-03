@@ -15,7 +15,7 @@ def getPostRes(id):
 
 
 # CHECK IF YOU don't NEED THE / ON THE ROUTE
-@reservations_routes.route("/", methods=["POST"])
+@reservations_routes.route("", methods=["POST"])
 def createRes():
     newRes = Reservation(
         userId=request.json['userId'],
@@ -28,7 +28,7 @@ def createRes():
     return newRes.to_dict()
 
 
-@reservations_routes.route("/", methods=["PATCH"])
+@reservations_routes.route("", methods=["PATCH"])
 def editRes():
     res = Reservation.query.get(request.json['id'])
     res.startTime = request.json['startTime']
@@ -38,7 +38,7 @@ def editRes():
     return res.to_dict()
 
 
-@reservations_routes.route("/", methods=["DELETE"])
+@reservations_routes.route("", methods=["DELETE"])
 def delRes():
     res = Reservation.query.get(request.json['id'])
     db.session.delete(res)

@@ -24,13 +24,13 @@ function SinglePost() {
     const [comment, setComment] = useState("")
     // console.log("AMOUNT OF STARS SELECTED", starsCount)
     // console.log(post)
-    // useEffect(() => {
-    //     if (sessionUser) {
-    //         dispatch(getReviewsThunk(postId))
-    //         dispatch(getReservationsThunk(postId))
-    //         dispatch(getSinglePostThunk(postId))
-    //     }
-    // }, [sessionUser]);
+    useEffect(() => {
+        if (sessionUser) {
+            // dispatch(getReviewsThunk(postId))
+            // dispatch(getSinglePostThunk(postId))
+            dispatch(getReservationsThunk(postId))
+        }
+    }, [sessionUser]);
 
     return (
     <div className="SP__mainContainer">
@@ -67,8 +67,7 @@ function SinglePost() {
 
                 <div className="SP__resFormCon">
                     <div>Click twice for start and ending date</div>
-                    <ReservationForm />
-                    <button className="SP__resBtn">New Reservation</button>
+                    <ReservationForm postId={postId} />
                 </div>
             </div>
         {/* <div>

@@ -5,7 +5,7 @@ from app.models import db, Reservation
 def seed_reservations():
     res1 = Reservation(startTime="08/10/2021", endTime="09/10/2021", userId=2, postId=1)
     res2 = Reservation(startTime="10/10/2021", endTime="11/10/2021", userId=2, postId=1)
-    res3 = Reservation(startTime="13/10/2021", endTime="15/10/2021", userId=3, postId=1)
+    res3 = Reservation(startTime="10/10/2021", endTime="10/12/2021", userId=3, postId=1)
     res4 = Reservation(startTime="18/10/2021", endTime="30/10/2021", userId=3, postId=5)
     res5 = Reservation(startTime="05/10/2021", endTime="08/10/2021", userId=3, postId=5)
     res6 = Reservation(startTime="11/10/2021", endTime="13/10/2021", userId=3, postId=2)

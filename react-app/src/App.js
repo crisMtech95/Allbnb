@@ -12,6 +12,8 @@ import HomePage from './components/HomePage';
 import SinglePost from './components/SinglePost';
 import { authenticate } from './store/session';
 import Modal from 'react-modal'
+import Search  from './components/Search'
+
 
 Modal.setAppElement("#root")
 function App() {
@@ -65,6 +67,9 @@ function App() {
         </Route>
         <Route  path='/' exact={true}>
             <HomePage />
+        </Route>
+        <Route path="/search">
+            <Search />
         </Route>
       </Switch>
     </BrowserRouter>

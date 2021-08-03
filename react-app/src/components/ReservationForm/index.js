@@ -25,21 +25,10 @@ function ReservationForm({ postId }) {
     const datesReservations = reservations?.map(el => {
             let { startTime } = el
             let { endTime } = el
-            let newstartTime = new Date(startTime)
-            let newendTime = new Date(endTime)
-            return fillDate(newstartTime, newendTime)
+            let formattedStart = new Date(startTime)
+            let formattedEnd = new Date(endTime)
+            return fillDate(formattedStart, formattedEnd)
     }).flat()
-
-
-    // useEffect(() => {
-    //     console.log(datesReservations)
-    //     // datesReservations.forEach(el => {
-    //     //     console.log("I AM ALL THE DATES FILLED", el)
-    //     // })
-    //     // reservations.forEach(el => {
-    //     //     console.log(el)
-    //     // })
-    // }, [reservations])
 
     const formattingDates = (newDate) => {
         var dd = String(newDate.getDate()).padStart(2, '0');
@@ -48,15 +37,6 @@ function ReservationForm({ postId }) {
         newDate = mm + '/' + dd + '/' + yyyy;
         return newDate
     }
-
-    // useEffect(() => {
-    //     if (date) {
-    //         console.log("DATE FLAG", date)
-    //         console.log("Date start formatted", formattingDates(date[0]))
-    //         console.log("Date end formatted", formattingDates(date[1]))
-    //     }
-    // }, [date])
-
 
 
     return (
@@ -67,8 +47,6 @@ function ReservationForm({ postId }) {
                 onChange={setDate}
                 value={date}
                 selectRange={true}
-                // tileDisabled={({newDate, view }) =>
-                //     newDate.getDate()===5 && newDate.getMonth()===7 && newDate.getFullYear()===2021}
                 tileDisabled={({date, view}) =>
                         datesReservations.some(disabledDate =>
                         date.getFullYear() === disabledDate.getFullYear() &&

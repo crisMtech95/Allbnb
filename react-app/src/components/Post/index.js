@@ -32,7 +32,7 @@ function Post({ post }) {
                 }
                 <Link to={`/posts/${post.id}`}>
                     <div className="post__imageDiv">
-                        <img alt="You'll never know" src={post?.images[0]?.imageUrl} className="post__image"/>
+                        <img alt="You'll never know" src={post?.images[0].imageUrl} className="post__image"/>
                     </div>
                 </Link>
                 <div className="post__contentContainer">

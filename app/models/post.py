@@ -2,7 +2,6 @@ from sqlalchemy.sql.schema import ForeignKey
 from .db import db
 
 
-
 class Post(db.Model):
     __tablename__ = 'posts'
 

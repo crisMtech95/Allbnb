@@ -14,12 +14,82 @@
     background-size: cover;
 } */
 
-.homePage__bgImageDiv {
+.homePage__bgImage {
     background-image: url('../../backgrounds/bike.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 80vh;
+    height: 60vh;
 }
 /* .homePage__bgImage {
 } */
+.homePage__citiesBigContainer {
+    width: 100%;
+    color: black;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+}
+.homePage__citiesContainer {
+    width: 90%;
+
+}
+
+.homePage__cities {
+    /* background-color: blue; */
+    width: 100%;
+    min-width: 580px;
+    max-width: 1439px;
+    /* height: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.homePage__city {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 280px;
+    height: 65px;
+    margin: 5px;
+
+}
+.homePage__cityimgDiv {
+    width: 65px;
+    height: 100%;
+    margin: 5px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.homePage__cityimg {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+.homePage__cityimgNyc {
+    background-image: url("../../backgrounds/nyc.jfif");
+}
+.homePage__cityimgBoston {
+    background-image: url("../../backgrounds/boston.png");
+}
+.homePage__cityimgPhil {
+    background-image: url("../../backgrounds/philadelphia.jpg");
+}
+.homePage__cityimgLa {
+    background-image: url("../../backgrounds/la.webp");
+}
+.homePage__cityimgMiami {
+    background-image: url("../../backgrounds/Miami.jpg");
+}
+.homePage__cityimgHus {
+    background-image: url("../../backgrounds/houston.jpg");
+}
+.homePage__cityInfoDiv * {
+    margin: 0;
+    padding: 0;
+}
+.homePage__cityInfoDiv p {
+    color: rgb(163, 157, 157);
+    font-size: 10px;
+}

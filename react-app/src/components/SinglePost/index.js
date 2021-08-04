@@ -5,29 +5,40 @@ import ReservationForm from '../ReservationForm';
 import { getReservationsThunk } from '../../store/reservations';
 import { getReviewsThunk } from '../../store/reviews';
 import { getSinglePostThunk } from '../../store/post';
+import { getImagesThunk } from '../../store/images';
 import Review from '../Review'
 import './SinglePost.css'
 import Map from '../Map';
 import ReactStars from 'react-rating-stars-component';
 import { addReviewThunk } from '../../store/reviews'
+import AddImg from '../AddImg';
+import Modal from 'react-modal'
+import { delImageThunk } from '../../store/images'
 
 function SinglePost() {
     const dispatch = useDispatch()
     const [starsCount, setStarsCount] = useState(0)
+    const [showAddImgModal, setShowAddImgModal] = useState(false)
+    const [showDelBtn, setShowDelBtn] = useState(false)
+    const [showDelModal, setShowDelModal] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
     const postsList = useSelector(state => Object.values(state.posts))
+    const imagesList = useSelector(state => Object.values(state.images))
     const { postId }  = useParams();
     const [post, setPost] = useState()
     const [comment, setComment] = useState("")
 
+    const openMenu = () => setShowDelBtn(true);
+    const closeMenu = () => setShowDelBtn(false);
+
 
     useEffect(() => {
-            console.log("LOADED SINGLE POST")
             dispatch(getSinglePostThunk(postId))
             setPost(postsList[postId])
             dispatch(getReservationsThunk(postId))
             dispatch(getReviewsThunk(postId))
+            dispatch(getImagesThunk(postId))
         }, []);
 
     return (
@@ -35,13 +46,41 @@ function SinglePost() {
         <div className="SP__container">
             <div className="SP__imagesBigCon">
                     {sessionUser.id === post?.userId &&
-                    <button className="SP__addImgDiv">
-                        <div className="SP__addImgIcon"/>
+                    <button
+                        className="SP__addImgDiv"
+                        onClick={() => setShowAddImgModal(true)}
+                        >
+                        <div className="SP__addImgIcon" />
                     </button>
                     }
-                {post?.images?.map((image, ind) => (
+                    {showAddImgModal &&
+                        <AddImg postId={postId} setShowAddImgModal={setShowAddImgModal}/>
+                    }
+                {imagesList?.map((image, ind) => (
                     <div key={ind} className="SP__imageDiv" id={`SP__imageDiv${ind}`}>
                         <img src={image.imageUrl} className={`SP__image`} />
+                        {/* <button className="image__delBtn" onClick={!showDelBtn ? openMenu : closeMenu }> */}
+                        <button className="image__delBtn" onClick={()=> setShowDelModal(!showDelModal)}>
+                                <div className="image__delBtnImage" />
+                        </button>
+                        {/* {showDelBtn && */}
+                        <Modal isOpen={showDelModal} onRequestClose={()=> setShowDelModal(false)}>
+                            <h6>Are you sure you want to remove this Image?</h6>
+                            <button
+                                className="image__submitDelImg"
+                                onClick={()=> {
+                                    dispatch(delImageThunk({id: image.id}))
+                                    setShowDelModal(false)
+                                }}
+                                >Remove image
+                            </button>
+                            <button
+                                onClick={()=> {
+                                    setShowDelModal(false)
+                                }}
+                            >Cancel</button>
+                        </Modal>
+                        {/* } */}
                     </div>
                 ))}
             </div>

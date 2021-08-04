@@ -1,6 +1,6 @@
 import "./NavBar.css"
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 
@@ -8,15 +8,18 @@ import { logout } from "../../store/session";
 const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
   const sessionUser = useSelector(state => state.session.user)
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
+
+  console.log("THIS IS THE LOCATION", location.pathname)
 
   return (
     <nav className="nav__bigContainer">
           <div className='navBar__homeIconLink'>
             <NavLink to='/' exact={true}>
-              <div className="navBar__homeIcon"></div>
+              <div className={location.pathname === "/" ? "navBar__homeIconWhite navBar__homeIcon" : "navBar__homeIconBlue navBar__homeIcon"}></div>
             </NavLink>
           </div>
           <div id="navBar__searchDiv">
@@ -33,7 +36,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
           <button className="navBar__userIconBtn"
               onClick={() => setShowBtns(!showBtns)}
           >
-          <div className="navBar__userIcon"/>
+            <div className={location.pathname === "/" ? "navBar__userIconWhite navBar__userIcon" : "navBar__userIconBlue navBar__userIcon"} />
           </button>
           {showBtns &&
           <div className="navBar__userAuth">

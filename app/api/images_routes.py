@@ -5,11 +5,18 @@ from app.models import Post, Category, Image, Reservation, db
 images_routes = Blueprint('images', __name__)
 
 
+@images_routes.route("/<int:id>")
+def getPostImages(id):
+    images = Image.query.filter_by(postId=id).all()
+
+    return {"images": [i.to_dict() for i in images]}
+
+
 @images_routes.route("", methods=["POST"])
 def createRev():
     newImg = Image(
         postId=request.json['postId'],
-        imageUlr=request.json['imageUrl']
+        imageUrl=request.json['imageUrl']
     )
     db.session.add(newImg)
     db.session.commit()

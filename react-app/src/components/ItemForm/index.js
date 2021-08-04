@@ -9,6 +9,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState("");
+  const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [price, setPrice] = useState(0);
   const [lat, setLat] = useState();
@@ -26,6 +27,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
     let obj = {
       userId: user.id,
       category: cate,
+      title: title,
       imageUrl: imageUrl,
       address: address,
       city: city,
@@ -36,11 +38,12 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
       content: content
     }
     dispatch(addPostThunk(obj))
+    setShowItemForm(false)
   };
 
-  if (!user) {
-    return <Redirect to='/' />;
-  }
+  // if (!user) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <Modal isOpen={showItemForm}
@@ -54,6 +57,16 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
+        </div>
+        <div>
+          <label>Title</label>
+          <input
+            name='title'
+            type='text'
+            placeholder='title'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
         <div>
           <label>Address</label>

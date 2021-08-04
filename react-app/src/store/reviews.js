@@ -69,7 +69,6 @@ export const delReviewThunk = (payload) => async(dispatch) => {
         dispatch(delreview(data))
         return data
     }
-
 }
 
 let initialState = {}

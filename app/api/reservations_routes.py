@@ -14,6 +14,15 @@ def getPostRes(id):
     return {"reservations": [r.to_dict() for r in reservations]}
 
 
+@reservations_routes.route("/user/<int:id>")
+def getUserRes(id):
+    reservations = Reservation.query.filter_by(userId=id).all()
+    # print("*"*40)
+    # print([r.to_dict() for r in reservations])
+    # print("*"*40)
+    return {"reservations": [r.to_dict() for r in reservations]}
+
+
 # CHECK IF YOU don't NEED THE / ON THE ROUTE
 @reservations_routes.route("", methods=["POST"])
 def createRes():

@@ -19,23 +19,24 @@ function SinglePost() {
     const dispatch = useDispatch()
     const [starsCount, setStarsCount] = useState(0)
     const [showAddImgModal, setShowAddImgModal] = useState(false)
-    const [showDelBtn, setShowDelBtn] = useState(false)
     const [showDelModal, setShowDelModal] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
-    const postsList = useSelector(state => Object.values(state.posts))
     const imagesList = useSelector(state => Object.values(state.images))
     const { postId }  = useParams();
-    const [post, setPost] = useState()
+    // const [post, setPost] = useState()
+    const post = useSelector(state => {
+        console.log(state.posts)
+        console.log("POST ID", postId)
+        // debbuger
+       return  state.posts && state.posts[postId]
+    })
     const [comment, setComment] = useState("")
+    console.log(post)
 
-    const openMenu = () => setShowDelBtn(true);
-    const closeMenu = () => setShowDelBtn(false);
-
-
-    useEffect(() => {
-            dispatch(getSinglePostThunk(postId))
-            setPost(postsList[postId])
+    useEffect(async() => {
+            await dispatch(getSinglePostThunk(postId))
+            // setPost(postsList[postId])
             dispatch(getReservationsThunk(postId))
             dispatch(getReviewsThunk(postId))
             dispatch(getImagesThunk(postId))
@@ -137,7 +138,7 @@ function SinglePost() {
                         onClick={() => {
                             dispatch(addReviewThunk({
                                 "userId": sessionUser.id,
-                                "postId": post.id,
+                                "postId": postId,
                                 "comment": comment,
                                 "stars": starsCount}))
                             setStarsCount(0)

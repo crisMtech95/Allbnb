@@ -80,7 +80,7 @@ export default function reviewsReducer (state = initialState, action) {
             action.payload.reviews.forEach(el => {
                 newState[el.id] = el
             })
-            return {...state, ...newState}
+            return {...newState}
         case ADD_REVIEW:
             newState = {[action.payload.id]: action.payload, ...state}
             return newState

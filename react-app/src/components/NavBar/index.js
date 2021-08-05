@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-
+import { getSearchThunk } from "../../store/search"
 
 const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const dispatch = useDispatch()
@@ -13,7 +13,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
 
-  console.log("THIS IS THE LOCATION", location.pathname)
+  // console.log("THIS IS THE LOCATION", location.pathname)
 
   return (
     <nav className="nav__bigContainer">
@@ -24,13 +24,20 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
           </div>
           <div id="navBar__searchDiv">
             <div className="navBar__searchDiv2">
+              <div className="navBar__searchDropDown">
+                <select><option></option></select>
+              </div>
               <input id="searchBar" value={searchInput} type="search"
                       onChange={(e) => setSearchInput(e.target.value)}
                       onClick={(e) => history.push("/search")}
-                      onKeyUp={() => console.log("if key===enter..etc... enter is 13 btw")}
+                      onKeyUp={() =>{
+                        console.log("if key===enter..etc... enter is 13 btw")
+                        dispatch(getSearchThunk({"city": searchInput}))
+                        }}
                       placeholder="State, city or town"
                       />
               <div className="navBar__searchIcon"></div>
+
             </div>
           </div>
           <button className="navBar__userIconBtn"

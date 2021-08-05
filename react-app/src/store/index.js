@@ -5,6 +5,7 @@ import posts from './post';
 import reservations from './reservations'
 import reviews from './reviews'
 import images from './images';
+import search from './search'
 
 const rootReducer = combineReducers({
   session,
@@ -12,7 +13,7 @@ const rootReducer = combineReducers({
   reservations,
   reviews,
   images,
-  
+  search,
 });
 
 

@@ -42,6 +42,19 @@ export const getOnePost = (payload) => {
     }
 }
 
+export const getSearchedPosts = payload => async(dispatch) => {
+    const res = await fetch("/api/posts/search", {
+        method: "PATCH",
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+    })
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(getPosts(data))
+    }
+}
+
+
 export const getSinglePostThunk = (id) => async(dispatch) => {
     const res = await fetch(`/api/posts/${id}`);
 

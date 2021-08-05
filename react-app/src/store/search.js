@@ -9,7 +9,7 @@ export const getSearch = (payload) => {
 }
 
 export const getSearchThunk = (payload) => async(dispatch) => {
-    const res = await fetch("/api/search", {
+    const res = await fetch("/api/posts/search", {
         method: "PATCH",
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(payload)

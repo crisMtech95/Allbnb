@@ -67,7 +67,7 @@ export default function imagesReducer (state = initialState, action) {
             action.payload.images.forEach(el => {
                 newState[el.id] = el
             })
-            return {...state, ...newState}
+            return {...newState}
         case ADD_IMAGES:
             newState = {[action.payload.id]: action.payload, ...state}
             return newState

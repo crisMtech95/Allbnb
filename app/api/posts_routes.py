@@ -12,28 +12,15 @@ def users(id):
 
 
 @posts_routes.route('/user/<int:id>')
-def user_posts(id):
+def users_posts(id):
     posts = Post.query.filter_by(userId=id).all()
     return {"userPosts": [p.to_dict() for p in posts]}
 
 
-# @posts_routes.route("/image", methods=["POST"])
-# def newImage():
-#     newImg = Image(
-#         imageUrl=request.json['imageUrl'],
-#         postId=request.json['postId']
-#     )
-#     db.session.add(newImg)
-#     db.session.commit()
-#     return newImg.to_dict()
-
-
-# @posts_routes.route('/image', methods=['DELETE'])
-# def del_img():
-#     img = Image.query.get(request.json['id'])
-#     db.session.delete(img)
-#     db.session.commit()
-#     return {"id": img.to_dict()['id']}
+@posts_routes.route('/search', methods=["PATCH"])
+def user_posts():
+    posts = Post.query.filter(Post.city.ilike(request.json['city'])).all()
+    return {"search": [p.to_dict() for p in posts]}
 
 
 # CHECK IF YOU NEED THE / ON THE ROUTE

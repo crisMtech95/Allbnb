@@ -17,6 +17,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
+      setShowSignup(false)
       if (data) {
         setErrors(data)
       }

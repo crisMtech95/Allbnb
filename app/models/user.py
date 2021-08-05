@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     fullName = db.Column(db.String(40), nullable=False)
+    imageUrl = db.Column(db.String(3000))
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     leaser = db.Column(db.Boolean(), nullable=False, default=False)
@@ -32,6 +33,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'fullName': self.fullName,
+            'imageUrl': self.imageUrl,
             'username': self.username,
             'email': self.email,
             'leaser': self.leaser,

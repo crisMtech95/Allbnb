@@ -17,11 +17,11 @@ class Post(db.Model):
     userId = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     categoryId = db.Column(db.Integer, ForeignKey("categories.id"), nullable=False)
 
-    reviews = db.relationship("Review", back_populates="post")
+    reviews = db.relationship("Review", cascade="all, delete-orphan", back_populates="post")
     user = db.relationship("User", back_populates="post")
     type = db.relationship("Category", back_populates="post")
     image = db.relationship("Image", cascade="all, delete-orphan", back_populates="post")
-    reservation = db.relationship("Reservation", back_populates="post")
+    reservation = db.relationship("Reservation", cascade="all, delete-orphan", back_populates="post")
 
     def to_dict(self):
         return {
@@ -62,7 +62,7 @@ class Image(db.Model):
     __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True)
-    imageUrl = db.Column(db.String(1000), nullable=False)
+    imageUrl = db.Column(db.String(3000), nullable=False)
     postId = db.Column(db.Integer, ForeignKey("posts.id"), nullable=False)
 
     post = db.relationship("Post", back_populates="image")

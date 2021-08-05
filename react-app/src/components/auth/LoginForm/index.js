@@ -15,6 +15,7 @@ const LoginForm = ({ showLogin, setShowLogin, customModalStyles }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
+      setShowLogin(false)
     if (data) {
       setErrors(data);
     }

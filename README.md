@@ -69,6 +69,8 @@ hurt to run it again.
 2. Create a new project on Heroku
 3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
 4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+
+
 5. Run
 
    ```bash

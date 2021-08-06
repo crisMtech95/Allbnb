@@ -102,8 +102,8 @@ hurt to run it again.
 10. set up your database
 
       ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+      heroku run -a all-bnb flask db upgrade
+      heroku run -a all-bnb flask seed all
       ```
 
 11. Under Settings find "Config Vars" and add any additional/secret .env

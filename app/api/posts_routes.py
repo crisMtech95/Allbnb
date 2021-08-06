@@ -19,7 +19,7 @@ def users_posts(id):
 
 @posts_routes.route('/search', methods=["PATCH"])
 def user_posts():
-    posts = Post.query.filter(Post.city.ilike(request.json['city'])).all()
+    posts = Post.query.filter(Post.city.ilike(request.json['city']) | Post.state.ilike(request.json['city']))
     return {"search": [p.to_dict() for p in posts]}
 
 

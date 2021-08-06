@@ -31,7 +31,7 @@ export default function searchReducer (state = initialState, action) {
             action.payload.search.forEach(el => {
                 newState[el.id] = el
             })
-            return {...state, ...newState}
+            return {...newState}
         default:
             return {...state}
     }

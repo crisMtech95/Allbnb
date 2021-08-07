@@ -26,12 +26,10 @@
     z-index: 1;
 }
 .homePage__h2 {
-    display: flex;
-    align-items: center;
     position: absolute;
     top: 50%;
     left: 10%;
-    width: 300px;
+    width: 250px;
     color: white;
     font-size: 30px;
     font-weight: 900;
@@ -64,11 +62,15 @@
 .homePage__city {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: transparent;
     width: 280px;
     height: 65px;
     margin: 5px;
-
+    padding: 2px;
+    border-radius: 20px;
+}
+.homePage__city:hover {
+    background-color: white;
 }
 .homePage__cityimgDiv {
     width: 65px;

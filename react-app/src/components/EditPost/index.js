@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Modal from 'react-modal'
 import { editPostThunk } from '../../store/post';
+// import "./EditPost.css"
 
 const EditPost = ({ post, setShowEditMenu }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(true)
   const [errors, setErrors] = useState([]);
+  const [title, setTitle] = useState("")
   const [address, setAddress] = useState(post.address);
   const [city, setCity] = useState(post.city);
   const [state, setState] = useState(post.state);
@@ -26,6 +28,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
     let obj = {
       id: post.id,
       userId: user.id,
+      title: title,
       address: address,
       city: city,
       state: state,
@@ -38,87 +41,110 @@ const EditPost = ({ post, setShowEditMenu }) => {
     setShowEditMenu(false)
   };
 
-
+  const customModalStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
 
   if (!user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <Modal isOpen={showModal} onRequestClose={()=> setShowModal(false)}>
-        <form onSubmit={onSubmit}>
+    <Modal
+        isOpen={showModal}
+        onRequestClose={()=> setShowModal(false)}
+        style={customModalStyles}
+        >
+        <form onSubmit={onSubmit} className="itemForm__form">
         <div>
             {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
             ))}
         </div>
-        <div>
+        <div className="postForm__labelsDiv">
+          <label>Title</label>
+        </div>
+          <input className="postForm__fields"
+            name='title'
+            type='text'
+            placeholder='title'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        <div className="postForm__labelsDiv">
             <label>Address</label>
-            <input
+        </div>
+            <input className="postForm__fields"
             name='Address'
             type='text'
             placeholder='Address'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
             <label>City</label>
-            <input
+        </div>
+            <input className="postForm__fields"
             name='City'
             type='text'
             placeholder='City'
             value={city}
             onChange={(e)=> setCity(e.target.value)}
             />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
             <label>State</label>
-            <input
+        </div>
+            <input className="postForm__fields"
             name='State'
             type='text'
             placeholder='State'
             value={state}
             onChange={(e)=> setState(e.target.value)}
             />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
             <label>Price</label>
-            <input
+        </div>
+            <input className="postForm__fields"
             name='Price'
             placeholder='Price'
             value={price}
             onChange={(e)=> setPrice(e.target.value)}
             />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
             <label>Latitude</label>
-            <input
+        </div>
+            <input className="postForm__fields"
             name='Latitude'
             placeholder='Latitude'
             value={lat}
             onChange={(e)=> setLat(e.target.value)}
             />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
             <label>Longitude</label>
-            <input
+        </div>
+            <input className="postForm__fields"
             name='Longitude'
             placeholder='Longitude'
             value={lng}
             onChange={(e)=> setLng(e.target.value)}
             />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
             <label>Content</label>
-            <input
+        </div>
+            <textarea className="postForm__fields postForm__textarea"
             name='Content'
             type='text'
             placeholder='Content'
             value={content}
             onChange={(e)=> setContent(e.target.value)}
             />
-        </div>
         {/* <div>
             <label>Image Url</label>
             <input
@@ -136,7 +162,9 @@ const EditPost = ({ post, setShowEditMenu }) => {
             ))}
             </select>
         </div> */}
+        <div className="postForm__btnDiv">
             <button type='submit'>Edit Post!</button>
+        </div>
         </form>
     </Modal>
   );

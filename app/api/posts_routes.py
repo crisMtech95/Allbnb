@@ -44,8 +44,8 @@ def create_post():
         city=request.json['city'],
         state=request.json['state'],
         price=request.json['price'],
-        lat=request.json['lat'],
-        lng=request.json['lng'],
+        # lat=request.json['lat'] or None,
+        # lng=request.json['lng'] or None,
         content=request.json['content'],
         )
     db.session.add(newPost)
@@ -62,6 +62,7 @@ def create_post():
 def edit_post():
     newPost = Post.query.get(request.json['id'])
     newPost.address = request.json['address']
+    newPost.title = request.json['title']
     newPost.city = request.json['city']
     newPost.title = request.json['title']
     newPost.state = request.json['state']

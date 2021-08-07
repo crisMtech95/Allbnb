@@ -8,7 +8,7 @@
     background-color: transparent;
     margin: 0;
     position: fixed;
-    z-index: 10;
+    z-index: 1;
 }
 .navBar__homeIconLink {
     width: 220px;
@@ -135,4 +135,3 @@
     justify-content: center;
     align-items: center;
 }
-

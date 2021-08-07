@@ -16,7 +16,7 @@ function HomePage() {
       <div className="homePage__mainContainer">
           <div className="homePage__bgImageDiv">
               <div className="homePage__bgImage"></div>
-              <span className="homePage__h2">Plan everything about your trip! in one place</span>
+              <span className="homePage__h2">Plan everything for your trip! in one place</span>
           </div>
           <div className="homePage__citiesBigContainer">
             <div className="homePage__citiesContainer">

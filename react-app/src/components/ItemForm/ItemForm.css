@@ -1,6 +1,68 @@
-.editForm__labelsDiv * {
+.itemForm__form {
+    /* background-color: grey; */
+    /* padding: 10px; */
+    /* width: auto; */
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.postForm__labelsDiv {
+    display: flex;
+    justify-content: center;
+}
+.postForm__labelsDiv label{
+    font-size: 16px;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 5px;
+}
+.postForm__labelsDiv {
     width: 100%;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 14px;
-    font-weight: 1000;
+}
+/* .postForm__btnDiv {
+    width: 100%;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+} */
+.postForm__btnDiv button {
+    margin-top: 12px;
+    /* background-color: #15ebb9; */
+    background-image: linear-gradient(to top, rgba(56, 182, 247, 0.7), #15ebb9, #15ebb9);
+    color: white;
+    height: 28px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 500px;
+    transition-duration: 0.3s;
+    border: none;
+    min-width: 140px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+}
+.postForm__btnDiv button:hover {
+    background-image: linear-gradient(to bottom, rgba(56, 182, 247, 0.7), #15ebb9, #15ebb9);
+
+}
+.postForm__fields {
+    /* display: block; */
+    border: 1px solid rgb(187, 187, 187);
+    padding: 6px;
+    border-radius: 2px;
+    width: 100%;
+}
+.postForm__textarea {
+    height: 87px;
+}
+.postForm__selectDiv {
+    width: 100%;
+    text-decoration: none;
+}
+.postForm__selectDiv select {
+    border: 1px solid rgb(187, 187, 187);
+    padding: 6px;
+    border-radius: 2px;
+    width: 100%;
 }

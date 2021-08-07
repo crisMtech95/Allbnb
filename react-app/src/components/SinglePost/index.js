@@ -42,6 +42,17 @@ function SinglePost() {
             dispatch(getImagesThunk(postId))
         }, []);
 
+        const customModalStyles = {
+            content: {
+              top: '50%',
+              left: '50%',
+              right: 'auto',
+              bottom: 'auto',
+              marginRight: '-50%',
+              transform: 'translate(-50%, -50%)',
+            },
+          };
+
     return (
     <div className="SP__mainContainer">
         <div className="SP__container">
@@ -49,13 +60,16 @@ function SinglePost() {
                     {sessionUser.id === post?.userId &&
                     <button
                         className="SP__addImgDiv"
-                        onClick={() => setShowAddImgModal(true)}
+                        onClick={() => setShowAddImgModal(!showAddImgModal)}
                         >
                         <div className="SP__addImgIcon" />
                     </button>
                     }
                     {showAddImgModal &&
-                        <AddImg postId={postId} setShowAddImgModal={setShowAddImgModal}/>
+                        <AddImg postId={postId}
+                                showAddImgModal={showAddImgModal}
+                                setShowAddImgModal={setShowAddImgModal}
+                                customModalStyles={customModalStyles}/>
                     }
                 {imagesList?.map((image, ind) => (
                     <div key={ind} className="SP__imageDiv" id={`SP__imageDiv${ind}`}>
@@ -65,7 +79,11 @@ function SinglePost() {
                                 <div className="image__delBtnImage" />
                         </button>
                         {/* {showDelBtn && */}
-                        <Modal isOpen={showDelModal} onRequestClose={()=> setShowDelModal(false)}>
+                        <Modal
+                            isOpen={showDelModal}
+                            onRequestClose={()=> setShowDelModal(false)}
+                            style={customModalStyles}
+                            >
                             <h6>Are you sure you want to remove this Image?</h6>
                             <button
                                 className="image__submitDelImg"

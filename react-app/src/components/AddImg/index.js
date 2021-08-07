@@ -5,10 +5,9 @@ import Modal from "react-modal"
 import { addImageThunk } from '../../store/images';
 
 
-const AddImg = ({ postId, setShowAddImgModal }) => {
+const AddImg = ({ postId, showAddImgModal, setShowAddImgModal, customModalStyles }) => {
   const [errors, setErrors] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
-  const [showModal, setShowModal] = useState(true)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -23,7 +22,11 @@ const AddImg = ({ postId, setShowAddImgModal }) => {
   };
 
   return (
-    <Modal isOpen={showModal} onRequestClose={()=> setShowModal(false)}>
+    <Modal
+      isOpen={showAddImgModal}
+      onRequestClose={()=> setShowAddImgModal(false)}
+      style={customModalStyles}
+      >
 
       <form onSubmit={onSubmit}>
         <div>

@@ -50,54 +50,52 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
       style={customModalStyles}
       onRequestClose={()=> setShowSignup(false)}>
 
-      <form onSubmit={onSignUp}>
+      <form onSubmit={onSignUp} className="itemForm__form">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
-          <label>User Name</label>
-          <br />
-          <input
+        <div className="postForm__labelsDiv">
+          <label>Username</label>
+        </div>
+          <input className="postForm__fields"
             type='text'
             name='username'
             onChange={updateUsername}
             value={username}
           ></input>
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
           <label>Email</label>
-          <br />
-          <input
+        </div>
+          <input className="postForm__fields"
             type='text'
             name='email'
             onChange={updateEmail}
             value={email}
-          ></input>
-        </div>
-        <div>
+          />
+        <div className="postForm__labelsDiv">
           <label>Password</label>
-          <br />
-          <input
+        </div>
+          <input className="postForm__fields"
             type='password'
             name='password'
             onChange={updatePassword}
             value={password}
-          ></input>
-        </div>
-        <div>
+          />
+        <div className="postForm__labelsDiv">
           <label>Repeat Password</label>
-          <br />
-          <input
+        </div>
+          <input className="postForm__fields"
             type='password'
             name='repeat_password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
-          ></input>
+          />
+        <div className="postForm__btnDiv">
+          <button type='submit'>Sign Up</button>
         </div>
-        <button type='submit'>Sign Up</button>
       </form>
 
     </Modal>

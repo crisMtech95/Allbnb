@@ -40,36 +40,35 @@ const LoginForm = ({ showLogin, setShowLogin, customModalStyles }) => {
              setShowLogin(false)
              history.push("/")
              }}>
-      <form onSubmit={onLogin}>
+      <form onSubmit={onLogin} className="itemForm__form">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className="postForm__labelsDiv">
           <label htmlFor='email'>Email</label>
-          <br />
-          <input
+        </div>
+          <input className="postForm__fields"
             name='email'
             type='text'
             placeholder='Email'
             value={email}
             onChange={updateEmail}
           />
-        </div>
-        <div>
+        <div className="postForm__labelsDiv">
           <label htmlFor='password'>Password</label>
-          <br />
-          <input
+        </div>
+          <input className="postForm__fields"
             name='password'
             type='password'
             placeholder='Password'
             value={password}
             onChange={updatePassword}
           />
-          <br />
-          <button type='submit'>Login</button>
-        </div>
+          <div className="postForm__btnDiv">
+            <button type='submit'>Login</button>
+          </div>
       </form>
 
     </Modal>

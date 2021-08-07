@@ -28,14 +28,15 @@ const AddImg = ({ postId, showAddImgModal, setShowAddImgModal, customModalStyles
       style={customModalStyles}
       >
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="itemForm__form">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className="postForm__labelsDiv">
           <label>Image Url</label>
+        </div>
           <input
             name='Image-Url'
             type='text'
@@ -43,8 +44,9 @@ const AddImg = ({ postId, showAddImgModal, setShowAddImgModal, customModalStyles
             value={imageUrl}
             onChange={(e)=> setImageUrl(e.target.value)}
           />
-        </div>
-          <button type='submit'>Add Image!</button>
+          <div className="postForm__btnDiv">
+            <button type='submit'>Add Image!</button>
+          </div>
       </form>
     </Modal>
   );

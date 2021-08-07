@@ -88,7 +88,7 @@ function SinglePost() {
                             <button
                                 className="image__submitDelImg"
                                 onClick={()=> {
-                                    dispatch(delImageThunk({id: image.id}))
+                                    // dispatch(delImageThunk({id: image.id}))
                                     setShowDelModal(false)
                                 }}
                                 >Remove image

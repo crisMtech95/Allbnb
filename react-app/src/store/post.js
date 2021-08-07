@@ -130,7 +130,7 @@ export default function postReducer (state = initialState, action) {
             action.payload.userPosts.forEach(el => {
                 newState[el.id] = el
             })
-            return {...state, ...newState}
+            return {...newState}
         case ADD_POST:
             newState = {...state, [action.payload.id]: action.payload}
             return newState

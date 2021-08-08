@@ -14,6 +14,8 @@ import { addReviewThunk } from '../../store/reviews'
 import AddImg from '../AddImg';
 import Modal from 'react-modal'
 import { delImageThunk } from '../../store/images'
+import Image from '../Image';
+import DelImgModal from '../DelImgModal';
 
 function SinglePost() {
     const dispatch = useDispatch()
@@ -32,7 +34,6 @@ function SinglePost() {
        return  state.posts && state.posts[postId]
     })
     const [comment, setComment] = useState("")
-    console.log(post)
 
     useEffect(async() => {
             await dispatch(getSinglePostThunk(postId))
@@ -72,47 +73,7 @@ function SinglePost() {
                                 customModalStyles={customModalStyles}/>
                     }
                 {imagesList?.map((image, ind) => (
-                    <div key={ind} className="SP__imageDiv" id={`SP__imageDiv${ind}`}>
-                        <img src={image.imageUrl} className={`SP__image`} />
-                        {/* <button className="image__delBtn" onClick={!showDelBtn ? openMenu : closeMenu }> */}
-                        {sessionUser.id === post?.userId &&
-                            <button className="image__delBtn" onClick={()=> setShowDelModal(!showDelModal)}>
-                                    <div className="image__delBtnImage" />
-                            </button>
-                        }
-                        {/* {showDelBtn && */}
-                        <Modal
-                            isOpen={showDelModal}
-                            onRequestClose={()=> setShowDelModal(false)}
-                            style={customModalStyles}
-                            >
-                            <form>
-                                <div className="postForm__labelsDiv">
-                                    <label>Are you sure you want to remove this Image?</label>
-                                </div>
-                                <div className="image__delBtnsContainer">
-                                    <div className="postForm__btnDiv">
-                                        <button
-                                            // className="image__submitDelImg"
-                                            onClick={(e)=> {
-                                                dispatch(delImageThunk({id: image.id}))
-                                                setShowDelModal(false)
-                                            }}
-                                            >Remove image
-                                        </button>
-                                    </div>
-                                    <div className="image__cancelDelImgDiv">
-                                        <button
-                                            onClick={(e)=> {
-                                                setShowDelModal(false)
-                                            }}
-                                        >Cancel</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </Modal>
-                        {/* } */}
-                    </div>
+                    <Image key={ind} ind={ind} image={image} post={post}/>
                 ))}
             </div>
             <div className="SP__splittingCon">

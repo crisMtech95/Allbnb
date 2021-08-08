@@ -8,3 +8,8 @@
     flex-direction: column;
     justify-content: center;
 }
+.user__reservationsBigContainer {
+    margin: 20px;
+    display: flex;
+    overflow-x: scroll;
+}

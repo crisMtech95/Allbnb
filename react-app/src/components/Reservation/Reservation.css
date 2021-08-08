@@ -1,0 +1,94 @@
+.reservation__mainContainer {
+    max-width: 400px;
+    min-width: 300px;
+    min-height: 220px;
+    border: solid 0.5px rgb(202, 198, 198) ;
+    margin: 30px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+}
+.reservation__con {
+    width: 90%;
+}
+.reservation__imageDiv {
+    max-width: 200px;
+    max-height: 180px;
+}
+.reservation__imageDiv img {
+    object-fit: contain;
+    width: 100%;
+}
+.reservation__timeDiv {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.reservation__timeDiv * {
+    margin: 4px;
+}
+.reservation__calendarImg {
+    background-image: url("../../icons/calendar.png");
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+}
+.reservation__priceDiv {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.reservation__priceDiv * {
+    margin: 4px;
+}
+.reservation__priceImg {
+    background-image: url("../../icons/money-bagGreenBorders.png");
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+}
+.reservation__cityDiv {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.reservation__cityDiv span {
+    font-size: 18px;
+    font-weight: 600;
+    /* line-height: ; */
+}
+.reservation__titleDiv {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.reservation__titleDiv span {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(114, 110, 110);
+}
+.reservation__cancelBtnDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.reservation__cancelBtnDiv button {
+    margin-top: 12px;
+    /* background-color: #15ebb9; */
+    background-image: linear-gradient(to top, rgba(146, 123, 123, 0.7), #252727, #585a5a);
+    color: white;
+    height: 28px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 500px;
+    transition-duration: 0.3s;
+    border: none;
+    min-width: 140px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+}

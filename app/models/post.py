@@ -37,8 +37,8 @@ class Post(db.Model):
             'userId': self.userId,
             'categoryId': self.categoryId,
             'images': [img.to_dict() for img in self.image],
-            'reservations': [r.to_dict() for r in self.reservation],
-            'reviews': [r.to_dict() for r in self.reviews]
+            # 'reservations': [r.to_dict() for r in self.reservation],
+            # 'reviews': [r.to_dict() for r in self.reviews]
         }
 
 
@@ -93,5 +93,6 @@ class Reservation(db.Model):
             'startTime': self.startTime,
             'endTime': self.endTime,
             'useId': self.userId,
-            'postId': self.postId
+            'postId': self.postId,
+            'post': self.post.to_dict(),
         }

@@ -52,4 +52,4 @@ def delRes():
     res = Reservation.query.get(request.json['id'])
     db.session.delete(res)
     db.session.commit()
-    return {"id": res.to_dict()['id']}
+    return {"id": request.json['id']}

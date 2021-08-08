@@ -34,6 +34,18 @@ export const getReservationsThunk = (id) => async(dispatch) => {
     }
 }
 
+export const getUserReservationsThunk = (id) => async(dispatch) => {
+    const res = await fetch(`/api/reservations/user/${id}`);
+
+    if (res.ok) {
+        const data = await res.json();
+        // console.log("THIS IS RES", res)
+        // console.log("THIS IS DATA", data)
+        dispatch(getPostRes(data));
+        return data
+    }
+}
+
 export const addResThunk = (payload) => async(dispatch) => {
     const res = await fetch("/api/reservations", {
         method: "POST",

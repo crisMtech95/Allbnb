@@ -43,6 +43,7 @@ const AddImg = ({ postId, showAddImgModal, setShowAddImgModal, customModalStyles
             placeholder='Image Url'
             value={imageUrl}
             onChange={(e)=> setImageUrl(e.target.value)}
+            required
           />
           <div className="postForm__btnDiv">
             <button type='submit'>Add Image!</button>

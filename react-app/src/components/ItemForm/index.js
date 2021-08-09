@@ -68,6 +68,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>Address</label>
@@ -78,6 +79,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='Address'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>City</label>
@@ -88,6 +90,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='City'
             value={city}
             onChange={(e)=> setCity(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>State</label>
@@ -98,6 +101,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='State'
             value={state}
             onChange={(e)=> setState(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>Price</label>
@@ -107,6 +111,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='Price'
             value={price}
             onChange={(e)=> setPrice(e.target.value)}
+            required
           />
         {/* <div>
           <label>Latitude</label>
@@ -135,6 +140,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='Content'
             value={content}
             onChange={(e)=> setContent(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>Image Url</label>
@@ -145,6 +151,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
             placeholder='Image Url'
             value={imageUrl}
             onChange={(e)=> setImageUrl(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>category</label>
@@ -152,7 +159,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
         <div
           className="postForm__selectDiv"
           >
-          <select value={cate} onChange={(e) => setCate(e.target.value)}>
+          <select value={cate} onChange={(e) => setCate(e.target.value)} required>
             {optionsList.map((el, i) => (
               <option key={i} value={el}>{el}</option>
             ))}

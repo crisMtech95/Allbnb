@@ -11,16 +11,25 @@ function Review({ review }) {
     const focusTextarea = useRef();
     const [showEditReview, setShowEditReview] = useState(false)
     const [showEditBtn, setShowEditBtn] = useState(false)
+    const [disableSubmit, setDisableSubmit] = useState(false)
     const [comment, setComment] = useState(review.comment)
     const [stars, setStars] = useState(review.stars)
     const sessionUser = useSelector(state =>  state.session.user)
 
     useEffect(() => {
         if(focusTextarea.current) focusTextarea.current.focus();
-       }, [focusTextarea, showEditBtn]);
+    }, [focusTextarea, showEditBtn]);
+
+    useEffect(() => {
+        if (comment.length) {
+            setDisableSubmit(false)
+        } else if (!comment.length) {
+            setDisableSubmit(true)
+        }
+    }, [comment])
 
     return (
-    <div className="review__container">
+        <div className="review__container">
         {sessionUser.id === review.userId &&
                     <div className="review__toggleBtn">
                         <button onClick={() => setShowEditReview(!showEditReview)} className="post__3dotsBtn">
@@ -44,12 +53,14 @@ function Review({ review }) {
                         }
                     </div>
                 }
+        <form>
         <ReactStars
             count={5}
             value={stars}
             onChange={(currentStars) => setStars(currentStars)}
             size={30}
             edit={showEditBtn}
+            required
             // isHalf={true}
         ></ReactStars>
         <textarea className="review__commentTextArea"
@@ -57,16 +68,20 @@ function Review({ review }) {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             disabled={!showEditBtn}
+            required
+            type="text"
             ></textarea>
         {showEditBtn &&
             <div className="review__submitDiv">
-                <button
+                <button disabled={disableSubmit}
                     onClick={() => {
-                        dispatch(editReviewThunk({
-                            "id": review.id,
-                            "comment": comment,
-                            "stars": stars
-                        }))
+                        if (comment.length) {
+                            dispatch(editReviewThunk({
+                                "id": review.id,
+                                "comment": comment,
+                                "stars": stars
+                            }))
+                        }
                         setShowEditReview(false)
                         setShowEditBtn(false)
                     }}
@@ -75,6 +90,8 @@ function Review({ review }) {
                 </button>
             </div>
         }
+
+        </form>
     </div>
     );
 }

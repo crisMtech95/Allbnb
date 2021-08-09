@@ -202,3 +202,13 @@
 .image__cancelDelImgDiv button:hover {
     background-image: linear-gradient(to bottom, rgba(161, 166, 168, 0.7), #606463, #606463);
 }
+.SP__reviewForm {
+    width: 100%;
+    /* display: flex; */
+}
+.SP_reviewStarsDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

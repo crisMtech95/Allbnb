@@ -27,12 +27,8 @@ function SinglePost() {
     const imagesList = useSelector(state => Object.values(state.images))
     const { postId }  = useParams();
     // const [post, setPost] = useState()
-    const post = useSelector(state => {
-        console.log(state.posts)
-        console.log("POST ID", postId)
-        // debbuger
-       return  state.posts && state.posts[postId]
-    })
+    const post = useSelector(state => state.posts && state.posts[postId]
+    )
     const [comment, setComment] = useState("")
 
     useEffect(async() => {
@@ -110,32 +106,41 @@ function SinglePost() {
                 </div>
                 <div className="SP__reviewFormDiv">
                 <div className="SP__reviewFormDiv2">
-                    <ReactStars
-                        count={5}
-                        size={30}
-                        edit={true}
-                        value={starsCount}
-                        onChange={(newRating) => {
-                            setStarsCount(newRating)
-                        }}
-                    />
-                    <textarea
-                        className="SP__reviewTextA"
-                        value={comment}
-                        onChange={e => setComment(e.target.value)}
-                        >
-                    </textarea>
-                    <button
-                        onClick={() => {
-                            dispatch(addReviewThunk({
-                                "userId": sessionUser.id,
-                                "postId": postId,
-                                "comment": comment,
-                                "stars": starsCount}))
-                            setStarsCount(0)
-                            setComment("")
-                            }}
-                    >Leave a Review!</button>
+                    <form className="SP__reviewForm">
+                        <div className="SP_reviewStarsDiv">
+                            <ReactStars
+                                count={5}
+                                size={30}
+                                edit={true}
+                                value={starsCount}
+                                onChange={(newRating) => {
+                                    setStarsCount(newRating)
+                                }}
+                                />{"(required)"}
+                        </div>
+                        <textarea
+                            className="SP__reviewTextA"
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                            required
+                            >
+                        </textarea>
+                        <button
+                            onClick={(e) => {
+                                if (comment.length > 0 && starsCount > 0) {
+                                    e.preventDefault()
+                                    dispatch(addReviewThunk({
+                                        "userId": sessionUser.id,
+                                        "postId": postId,
+                                        "comment": comment,
+                                        "stars": starsCount}))
+                                        setStarsCount(0)
+                                        setComment("")
+                                        }
+                                    }
+                                }
+                        >Leave a Review!</button>
+                    </form>
                 </div>
                 </div>
                 <div className="SP__reviewContainer">

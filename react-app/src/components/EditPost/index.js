@@ -77,6 +77,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         <div className="postForm__labelsDiv">
             <label>Address</label>
@@ -87,6 +88,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='Address'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required
             />
         <div className="postForm__labelsDiv">
             <label>City</label>
@@ -97,6 +99,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='City'
             value={city}
             onChange={(e)=> setCity(e.target.value)}
+            required
             />
         <div className="postForm__labelsDiv">
             <label>State</label>
@@ -107,6 +110,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='State'
             value={state}
             onChange={(e)=> setState(e.target.value)}
+            required
             />
         <div className="postForm__labelsDiv">
             <label>Price</label>
@@ -116,6 +120,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='Price'
             value={price}
             onChange={(e)=> setPrice(e.target.value)}
+            required
             />
         <div className="postForm__labelsDiv">
             <label>Latitude</label>
@@ -125,6 +130,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='Latitude'
             value={lat}
             onChange={(e)=> setLat(e.target.value)}
+            required
             />
         <div className="postForm__labelsDiv">
             <label>Longitude</label>
@@ -134,6 +140,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='Longitude'
             value={lng}
             onChange={(e)=> setLng(e.target.value)}
+            required
             />
         <div className="postForm__labelsDiv">
             <label>Content</label>
@@ -144,6 +151,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             placeholder='Content'
             value={content}
             onChange={(e)=> setContent(e.target.value)}
+            required
             />
         {/* <div>
             <label>Image Url</label>

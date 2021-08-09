@@ -14,6 +14,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const [searchInput, setSearchInput] = useState("")
 
   // console.log("THIS IS THE LOCATION", location.pathname)
+  //checking the Demo button
 
   return (
     <nav className="nav__bigContainer">

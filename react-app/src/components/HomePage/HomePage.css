@@ -44,7 +44,7 @@
     justify-content: center;
 }
 .homePage__citiesContainer {
-    width: 90%;
+    /* width: 90%; */
     font-family: sans-serif;
 
 }
@@ -115,4 +115,11 @@
 .homePage__cityInfoDiv p {
     color: rgb(163, 157, 157);
     font-size: 10px;
+}
+.Homepage__footer {
+    width: 100%;
+    height: 75px;
+    background-color: #4e4949;
+    color: white;
+
 }

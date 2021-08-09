@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './HomePage.css'
 
@@ -83,7 +83,11 @@ function HomePage() {
               </div>
             </div>
           </div>
-
+          <div className="Homepage__footer">
+            <a href="https://github.com/crisMtech95" target="_blank">GitHub</a>
+            <a></a>
+            <a></a>
+          </div>
       </div>
     );
 }

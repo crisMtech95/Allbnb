@@ -90,6 +90,13 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
                 >
                   Sign Up
                 </button>
+                <button
+                  onClick={()=> {
+                    console.log("Demo button")
+                  }}
+                >
+                  Demo User
+                </button>
               </div>
             }
           </div>

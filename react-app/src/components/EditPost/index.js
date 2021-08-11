@@ -122,7 +122,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             onChange={(e)=> setPrice(e.target.value)}
             required
             />
-        <div className="postForm__labelsDiv">
+        {/* <div className="postForm__labelsDiv">
             <label>Latitude</label>
         </div>
             <input className="postForm__fields"
@@ -141,7 +141,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
             value={lng}
             onChange={(e)=> setLng(e.target.value)}
             required
-            />
+            /> */}
         <div className="postForm__labelsDiv">
             <label>Content</label>
         </div>

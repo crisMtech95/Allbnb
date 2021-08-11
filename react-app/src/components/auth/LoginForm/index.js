@@ -55,6 +55,7 @@ const LoginForm = ({ showLogin, setShowLogin, customModalStyles }) => {
             placeholder='Email'
             value={email}
             onChange={updateEmail}
+            required
           />
         <div className="postForm__labelsDiv">
           <label htmlFor='password'>Password</label>
@@ -65,6 +66,7 @@ const LoginForm = ({ showLogin, setShowLogin, customModalStyles }) => {
             placeholder='Password'
             value={password}
             onChange={updatePassword}
+            required
           />
           <div className="postForm__btnDiv">
             <button type='submit'>Login</button>

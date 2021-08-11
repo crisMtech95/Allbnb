@@ -64,6 +64,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
             name='username'
             onChange={updateUsername}
             value={username}
+            required
           ></input>
         <div className="postForm__labelsDiv">
           <label>Email</label>
@@ -73,6 +74,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
             name='email'
             onChange={updateEmail}
             value={email}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>Password</label>
@@ -82,6 +84,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
             name='password'
             onChange={updatePassword}
             value={password}
+            required
           />
         <div className="postForm__labelsDiv">
           <label>Repeat Password</label>

@@ -2,8 +2,9 @@ import "./NavBar.css"
 import React, { useState } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../store/session";
+import { logout, login } from "../../store/session";
 import { getSearchThunk } from "../../store/search"
+
 
 const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const dispatch = useDispatch()
@@ -93,7 +94,8 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
                 </button>
                 <button
                   onClick={()=> {
-                    console.log("Demo button")
+                    dispatch(login("demo@aa.io", "password"))
+                    setShowBtns(false)
                   }}
                 >
                   Demo User

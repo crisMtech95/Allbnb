@@ -18,6 +18,10 @@ function User() {
   const userRes = useSelector(state => Object.values(state.reservations))
 
   useEffect(() => {
+    document.title = "Allbnb - user"
+  }, [])
+
+  useEffect(() => {
     // if (!userId) return;
 
     (async () => {
@@ -33,6 +37,8 @@ function User() {
   if (!user) {
     return null;
   }
+
+
 
   return (
     <div className="mainContainer">

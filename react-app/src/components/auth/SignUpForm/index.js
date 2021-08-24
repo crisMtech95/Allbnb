@@ -6,6 +6,7 @@ import Modal from 'react-modal'
 
 const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
   const [errors, setErrors] = useState([]);
+  const [fullName, setFullName] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,11 +17,15 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      setShowSignup(false)
+      const data = await dispatch(signUp(username, email, password, fullName));
       if (data) {
+        console.log("THIS IS THE DATA", data)
         setErrors(data)
+      } else {
+        setShowSignup(false)
       }
+    } else {
+      setErrors(["Passwords must match!"])
     }
   };
 
@@ -57,6 +62,16 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
           ))}
         </div>
         <div className="postForm__labelsDiv">
+          <label>Full Name</label>
+        </div>
+          <input className="postForm__fields"
+            type='text'
+            name='fullName'
+            onChange={(e) => setFullName(e.target.value)}
+            value={fullName}
+            required
+          ></input>
+        <div className="postForm__labelsDiv">
           <label>Username</label>
         </div>
           <input className="postForm__fields"
@@ -70,7 +85,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
           <label>Email</label>
         </div>
           <input className="postForm__fields"
-            type='text'
+            type='email'
             name='email'
             onChange={updateEmail}
             value={email}
@@ -87,7 +102,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
             required
           />
         <div className="postForm__labelsDiv">
-          <label>Repeat Password</label>
+          <label>Confirm Password</label>
         </div>
           <input className="postForm__fields"
             type='password'

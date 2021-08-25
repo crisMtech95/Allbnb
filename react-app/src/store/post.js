@@ -66,7 +66,6 @@ export const getSinglePostThunk = (id) => async(dispatch) => {
 }
 export const getUserPostsThunk = (id) => async(dispatch) => {
     const res = await fetch(`/api/posts/user/${id}`);
-
     if (res.ok) {
         const data = await res.json();
         dispatch(getUserPosts(data));

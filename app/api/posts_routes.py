@@ -13,7 +13,12 @@ def users(id):
 
 @posts_routes.route('/user/<int:id>')
 def users_posts(id):
+    print("-"*40)
+    print(id)
+    print("-"*40)
     posts = Post.query.filter_by(userId=id).all()
+    print(posts)
+    print("-"*40)
     return {"userPosts": [p.to_dict() for p in posts]}
 
 

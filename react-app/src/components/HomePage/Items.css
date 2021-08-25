@@ -1,0 +1,13 @@
+.Homepage__itemImgDiv {
+    width: 300px;
+    height: 300px;
+}
+.Homepage__itemImgDiv img {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 300px;
+    height: 300px;
+}
+.Homepage__items {
+    display: flex;
+}

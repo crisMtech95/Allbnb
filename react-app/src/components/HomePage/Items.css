@@ -6,10 +6,9 @@
 .homePage__itemsContainer {
     width: 90%;
 }
-/* .Homepage__itemImgDiv {
-    margin: 15px;
-
-} */
+.Homepage__itemImgDiv {
+    margin: 5px;
+}
 .Homepage__itemImgDiv img {
     background-repeat: no-repeat;
     background-size: contain;

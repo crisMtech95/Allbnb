@@ -48,7 +48,6 @@
     box-shadow: -0.5px 0.5px 10px 4px rgba(0,0,0,0.3);
 }
 .HomePage__itemsArrows:hover {
-    /* background-color: white; */
     box-shadow: -0.5px 0.5px 10px 4px rgba(0,0,0,0.5);
 }
 .HomePage__itemsLeftArrow {

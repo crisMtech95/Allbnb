@@ -54,7 +54,7 @@ function SinglePost() {
     <div className="SP__mainContainer">
         <div className="SP__container">
             <div className="SP__imagesBigCon">
-                    {sessionUser.id === post?.userId &&
+                    {sessionUser?.id === post?.userId &&
                     <button
                         className="SP__addImgDiv"
                         onClick={() => setShowAddImgModal(!showAddImgModal)}

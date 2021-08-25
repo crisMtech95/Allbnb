@@ -64,7 +64,7 @@ function App() {
         <Route path="/posts/:postId">
               <SinglePost />
         </Route>
-        <Route  path='/' exact={true}>
+        <Route path='/' exact={true}>
             <HomePage />
         </Route>
         <Route path="/search">

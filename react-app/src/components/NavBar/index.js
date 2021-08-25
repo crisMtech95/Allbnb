@@ -1,5 +1,5 @@
 import "./NavBar.css"
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout, login } from "../../store/session";
@@ -13,9 +13,24 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const sessionUser = useSelector(state => state.session.user)
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
+  let menuRef = useRef()
 
-  // console.log("THIS IS THE LOCATION", location.pathname)
-  //checking the Demo button
+  useEffect(() => {
+    //closes menu when user clicks outside of it
+    const clickOutside = e => {
+      if (!menuRef?.current?.contains(e.target)) {
+        setShowBtns(false)
+      }
+  }
+    document.addEventListener("mousedown", clickOutside)
+
+    return ( ) => {
+      document.removeEventListener("mousedown", clickOutside)
+    }
+  }, [])
+  useEffect(() => {
+    console.log(menuRef)
+  }, [menuRef])
 
   return (
     <nav className="nav__bigContainer">
@@ -50,7 +65,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
           {showBtns &&
           <div className="navBar__userAuth">
             {sessionUser ?
-              <div className="navBar__userLinkDiv">
+              <div ref={menuRef} className="navBar__userLinkDiv">
                 <button
                   onClick={()=> {
                     setShowBtns(false)
@@ -75,7 +90,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
                 >Log out</button>
               </div>
               :
-              <div className="navBar__userLinkDiv">
+              <div ref={menuRef} className="navBar__userLinkDiv">
                 <button
                   onClick={()=> {
                     setShowLogin(true)

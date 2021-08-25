@@ -85,11 +85,11 @@ function HomePage() {
           </div>
           <div className="Homepage__mainFooter">
             <div className="Homepage__footer">
-              <a class="Footer__githubDiv" href="https://github.com/crisMtech95" target="_blank"
+              <a className="Footer__githubDiv" href="https://github.com/crisMtech95" target="_blank"
                   ><div className="Footer__githubDiv" />
               </a>
               <div className="Footer__">© 2021 Allbnb, Inc.</div>
-              <a class="Footer__Linked-In" href="https://www.linkedin.com/in/cristhian-morales-526b85215/" target="_blank">
+              <a className="Footer__Linked-In" href="https://www.linkedin.com/in/cristhian-morales-526b85215/" target="_blank">
                   <div className="Footer__linkedInDiv"/>
               </a>
             </div>

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, Link } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserPostsThunk } from "../../store/post"
 import "./Items.css"
@@ -40,11 +41,11 @@ const Items = () => {
                             <div className="Homepage__itemImgBigDiv">
                                 {current == 0 ?
                                 <div>
-                                    <a href={`/posts/${posts[posts.length-1].id}`}>
+                                    <Link to={`/posts/${posts[posts.length-1].id}`}>
                                         <div className="homepage__itemImgDiv">
                                             <img src={posts[posts.length - 1].images[0].imageUrl}/>
                                         </div>
-                                    </a>
+                                    </Link>
                                     <div>
                                         <h3>{posts[posts.length-1].title}</h3>
                                     </div>
@@ -52,11 +53,11 @@ const Items = () => {
                                 :
                                 <div>
 
-                                    <a href={`/posts/${posts[i-1].id}`}>
+                                    <Link to={`/posts/${posts[i-1].id}`}>
                                         <div className="homepage__itemImgDiv">
                                             <img src={posts[i-1].images[0].imageUrl}/>
                                         </div>
-                                    </a>
+                                    </Link>
 
                                     <div>
                                         <h3>{posts[i-1].title}</h3>
@@ -65,11 +66,11 @@ const Items = () => {
                                 }
                             </div>
                             <div className="Homepage__itemImgDiv">
-                                <a href={`/posts/${posts.id}`}>
+                                <Link to={`/posts/${post.id}`}>
                                     <div className="homepage__itemImgDiv">
                                         <img src={post.images[0].imageUrl}/>
                                     </div>
-                                </a>
+                                </Link>
                                 <div>
                                     <h3>{post.title}</h3>
                                 </div>
@@ -77,22 +78,22 @@ const Items = () => {
                             <div className="Homepage__itemImgDiv">
                                 {i == posts.length - 1?
                                 <div>
-                                    <a href={`/posts/${posts[0].id}`}>
+                                    <Link to={`/posts/${posts[0].id}`}>
                                         <div className="homepage__itemImgDiv">
                                             <img src={posts[0].images[0].imageUrl}/>
                                         </div>
-                                    </a>
+                                    </Link>
                                     <div>
                                         <h3>{posts[0].title}</h3>
                                     </div>
                                 </div>
                                 :
                                 <div>
-                                    <a href={`/posts/${posts[i+1].id}`}>
+                                    <Link to={`/posts/${posts[i+1].id}`}>
                                         <div className="homepage__itemImgDiv">
                                             <img src={posts[i+1].images[0].imageUrl}/>
                                         </div>
-                                    </a>
+                                    </Link>
                                     <div>
                                         <h3>{posts[i+1].title}</h3>
                                     </div>

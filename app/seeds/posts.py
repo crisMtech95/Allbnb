@@ -20,11 +20,11 @@ def seed_posts():
         city="elmhurst", state="New York", price=107, lat=123, lng=542,
         content="So this is the description for this random content")
     post5 = Post(
-        userId=2, categoryId=1, address="5432 random Ave", title="Need to go somewhere fast?, this is the car for you",
+        userId=2, categoryId=1, address="5432 random Ave", title="Fast rides",
         city="Los Angeles", state="California", price=210, lat=123, lng=542,
         content="So this is the description for this random content")
     post6 = Post(
-        userId=2, categoryId=2, address="5432 random Ave", title="Great House, in a good area, 2 bedrooms",
+        userId=2, categoryId=2, address="5432 random Ave", title="Unique stays",
         city="Los Angeles", state="California", price=450, lat=123, lng=542,
         content="So this is the description for this random content")
     post7 = Post(
@@ -36,7 +36,7 @@ def seed_posts():
         city="Miami", state="Florida", price=450, lat=123, lng=542,
         content="So this is the description for this random content")
     post9 = Post(
-        userId=2, categoryId=2, address="8955 random Ave", title="Honda Jet ski for rent!",
+        userId=2, categoryId=2, address="8955 random Ave", title="Near Miami?",
         city="Miami", state="Florida", price=780, lat=123, lng=542,
         content="So this is the description for this random content")
     post10 = Post(

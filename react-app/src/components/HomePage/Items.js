@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Link } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserPostsThunk } from "../../store/post"
 import "./Items.css"
@@ -37,29 +37,67 @@ const Items = () => {
                     if (current === i) {
                     return (
                         <div className="Homepage__item" key={post.id}>
-                            <div className="Homepage__itemImgDiv">
+                            <div className="Homepage__itemImgBigDiv">
                                 {current == 0 ?
-                                <img src={posts[posts.length - 1].images[0].imageUrl}/> :
-                                <img src={posts[i-1].images[0].imageUrl}/>
-                                }
                                 <div>
-                                    <h3>Random Title</h3>
+                                    <a href={`/posts/${posts[posts.length-1].id}`}>
+                                        <div className="homepage__itemImgDiv">
+                                            <img src={posts[posts.length - 1].images[0].imageUrl}/>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <h3>{posts[posts.length-1].title}</h3>
+                                    </div>
                                 </div>
+                                :
+                                <div>
+
+                                    <a href={`/posts/${posts[i-1].id}`}>
+                                        <div className="homepage__itemImgDiv">
+                                            <img src={posts[i-1].images[0].imageUrl}/>
+                                        </div>
+                                    </a>
+
+                                    <div>
+                                        <h3>{posts[i-1].title}</h3>
+                                    </div>
+                                </div>
+                                }
                             </div>
                             <div className="Homepage__itemImgDiv">
-                                <img src={post.images[0].imageUrl}/>
+                                <a href={`/posts/${posts.id}`}>
+                                    <div className="homepage__itemImgDiv">
+                                        <img src={post.images[0].imageUrl}/>
+                                    </div>
+                                </a>
                                 <div>
-                                    <h3>Random Title</h3>
+                                    <h3>{post.title}</h3>
                                 </div>
                             </div>
                             <div className="Homepage__itemImgDiv">
                                 {i == posts.length - 1?
-                                <img src={posts[0].images[0].imageUrl}/> :
-                                <img src={posts[i+1].images[0].imageUrl}/>
-                                }
                                 <div>
-                                    <h3>Random Title</h3>
+                                    <a href={`/posts/${posts[0].id}`}>
+                                        <div className="homepage__itemImgDiv">
+                                            <img src={posts[0].images[0].imageUrl}/>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <h3>{posts[0].title}</h3>
+                                    </div>
                                 </div>
+                                :
+                                <div>
+                                    <a href={`/posts/${posts[i+1].id}`}>
+                                        <div className="homepage__itemImgDiv">
+                                            <img src={posts[i+1].images[0].imageUrl}/>
+                                        </div>
+                                    </a>
+                                    <div>
+                                        <h3>{posts[i+1].title}</h3>
+                                    </div>
+                                </div>
+                                }
                             </div>
                         </div>
                         )

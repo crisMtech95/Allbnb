@@ -2,21 +2,29 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin: 25px 0 35px 0;
 }
 .homePage__itemsContainer {
     width: 90%;
 }
-.Homepage__itemImgDiv {
+.homepage__itemImgDiv {
     margin: 5px;
-}
-.Homepage__itemImgDiv img {
-    background-repeat: no-repeat;
-    background-size: contain;
+    border-radius: 15px;
+    overflow: hidden;
+
     width: 240px;
     /* width: 100%; */
     height: 240px;
-
 }
+.homepage__itemImgDiv img {
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+
+    height: 100%;
+}
+
 .Homepage__item {
     display: flex;
     justify-content: space-around;
@@ -45,6 +53,7 @@
     overflow: hidden;
     background-color: #FFFFFF;
     box-shadow: -0.5px 0.5px 10px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
 }
 .HomePage__itemsArrows:hover {
     box-shadow: -0.5px 0.5px 10px 4px rgba(0,0,0,0.5);

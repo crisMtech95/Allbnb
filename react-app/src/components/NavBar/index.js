@@ -14,11 +14,12 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
   let menuRef = useRef()
+  let btnRef = useRef()
 
   useEffect(() => {
     //closes menu when user clicks outside of it
     const clickOutside = e => {
-      if (!menuRef?.current?.contains(e.target)) {
+      if (!menuRef?.current?.contains(e.target) && !btnRef?.current?.contains(e.target)) {
         setShowBtns(false)
       }
   }
@@ -57,7 +58,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
 
             </div>
           </div>
-          <button className="navBar__userIconBtn"
+          <button className="navBar__userIconBtn" ref={btnRef}
               onClick={() => setShowBtns(!showBtns)}
           >
             <div className={location.pathname === "/" ? "navBar__userIconWhite navBar__userIcon" : "navBar__userIconBlue navBar__userIcon"} />

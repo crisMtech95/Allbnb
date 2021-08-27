@@ -27,18 +27,15 @@ function SinglePost() {
     const imagesList = useSelector(state => Object.values(state.images))
     const reservations = useSelector(state => Object.values(state.reservations))
     const { postId }  = useParams();
-    let [foundRes, setFoundRes] = useState(undefined)
-    // const [post, setPost] = useState()
-    const post = useSelector(state => state.posts && state.posts[postId]
-    )
+    const [foundRes, setFoundRes] = useState(false)
+    const post = useSelector(state => state.posts && state.posts[postId])
     const [comment, setComment] = useState("")
 
     useEffect(async() => {
             await dispatch(getSinglePostThunk(postId))
-            // setPost(postsList[postId])
-            dispatch(getReservationsThunk(postId))
-            dispatch(getReviewsThunk(postId))
-            dispatch(getImagesThunk(postId))
+            await dispatch(getReservationsThunk(postId))
+            await dispatch(getReviewsThunk(postId))
+            await dispatch(getImagesThunk(postId))
         }, []);
 
     useEffect(() => {
@@ -46,6 +43,8 @@ function SinglePost() {
             reservations.forEach(obj =>{
                 if (obj.userId === sessionUser.id) {
                     setFoundRes(true)
+                } else {
+                    setFoundRes(false)
                 }
 
             })
@@ -117,7 +116,7 @@ function SinglePost() {
                 <div className="SP__reviewH2Div">
                     <h2>Reviews</h2>
                 </div>
-                {foundRes &&
+                {foundRes && reservations.length > 0 &&
                 <div className="SP__reviewFormDiv">
                 <div className="SP__reviewFormDiv2">
                     <form className="SP__reviewForm">

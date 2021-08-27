@@ -65,7 +65,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           <input className="postForm__fields"
             name='title'
             type='text'
-            placeholder='title'
+            // placeholder='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -76,7 +76,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           <input className="postForm__fields"
             name='Address'
             type='text'
-            placeholder='Address'
+            // placeholder='Address'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
@@ -87,7 +87,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           <input className="postForm__fields"
             name='City'
             type='text'
-            placeholder='City'
+            // placeholder='City'
             value={city}
             onChange={(e)=> setCity(e.target.value)}
             required
@@ -98,7 +98,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           <input className="postForm__fields"
             name='State'
             type='text'
-            placeholder='State'
+            // placeholder='State'
             value={state}
             onChange={(e)=> setState(e.target.value)}
             required
@@ -108,7 +108,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
         </div>
           <input className="postForm__fields"
             name='Price'
-            placeholder='Price'
+            // placeholder='Price'
             value={price}
             onChange={(e)=> setPrice(e.target.value)}
             required
@@ -137,7 +137,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           <textarea className="postForm__fields postForm__textarea"
             name='Content'
             type='text'
-            placeholder='Content'
+            // placeholder='Content'
             value={content}
             onChange={(e)=> setContent(e.target.value)}
             required
@@ -148,7 +148,7 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
           <input className="postForm__fields"
             name='Image-Url'
             type='text'
-            placeholder='Image Url'
+            // placeholder='Image Url'
             value={imageUrl}
             onChange={(e)=> setImageUrl(e.target.value)}
             required

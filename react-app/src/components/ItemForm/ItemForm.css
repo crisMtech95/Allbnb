@@ -9,13 +9,14 @@
 }
 .postForm__labelsDiv {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .postForm__labelsDiv label{
     font-size: 16px;
     font-weight: 500;
     font-family: sans-serif;
     margin: 5px;
+    color: rgb(121, 117, 117);
 }
 .postForm__labelsDiv {
     width: 100%;

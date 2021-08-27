@@ -53,120 +53,124 @@ const ItemForm = ({ showItemForm, setShowItemForm, customModalStyles }) => {
               setShowItemForm(false)
               }}>
 
-      <form onSubmit={onSubmit} className="itemForm__form">
+      <form onSubmit={onSubmit} className="itemForm__formDiv">
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className="postForm__labelsDiv">
-          <label>Title</label>
+        <div className="postForm__splitDiv">
+          <div className="postForm__labelsDiv">
+            <label>Title</label>
+          </div>
+            <input className="postForm__fields"
+              name='title'
+              type='text'
+              // placeholder='title'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          <div className="postForm__labelsDiv">
+            <label>Address</label>
+          </div>
+            <input className="postForm__fields"
+              name='Address'
+              type='text'
+              // placeholder='Address'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          <div className="postForm__labelsDiv">
+            <label>City</label>
+          </div>
+            <input className="postForm__fields"
+              name='City'
+              type='text'
+              // placeholder='City'
+              value={city}
+              onChange={(e)=> setCity(e.target.value)}
+              required
+            />
+          <div className="postForm__labelsDiv">
+            <label>State</label>
+          </div>
+            <input className="postForm__fields"
+              name='State'
+              type='text'
+              // placeholder='State'
+              value={state}
+              onChange={(e)=> setState(e.target.value)}
+              required
+            />
+              <div className="postForm__labelsDiv">
+                <label>Price</label>
+              </div>
+                <input className="postForm__fields"
+                  name='Price'
+                  // placeholder='Price'
+                  value={price}
+                  onChange={(e)=> setPrice(e.target.value)}
+                  required
+                />
         </div>
-          <input className="postForm__fields"
-            name='title'
-            type='text'
-            // placeholder='title'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        <div className="postForm__labelsDiv">
-          <label>Address</label>
-        </div>
-          <input className="postForm__fields"
-            name='Address'
-            type='text'
-            // placeholder='Address'
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        <div className="postForm__labelsDiv">
-          <label>City</label>
-        </div>
-          <input className="postForm__fields"
-            name='City'
-            type='text'
-            // placeholder='City'
-            value={city}
-            onChange={(e)=> setCity(e.target.value)}
-            required
-          />
-        <div className="postForm__labelsDiv">
-          <label>State</label>
-        </div>
-          <input className="postForm__fields"
-            name='State'
-            type='text'
-            // placeholder='State'
-            value={state}
-            onChange={(e)=> setState(e.target.value)}
-            required
-          />
-        <div className="postForm__labelsDiv">
-          <label>Price</label>
-        </div>
-          <input className="postForm__fields"
-            name='Price'
-            // placeholder='Price'
-            value={price}
-            onChange={(e)=> setPrice(e.target.value)}
-            required
-          />
-        {/* <div>
-          <label>Latitude</label>
-        </div>
-          <input
-            name='Latitude'
-            placeholder='Latitude'
-            value={lat}
-            onChange={(e)=> setLat(e.target.value)}
-          />
-        <div>
-          <label>Longitude</label>
-        </div>
-          <input
-            name='Longitude'
-            placeholder='Longitude'
-            value={lng}
-            onChange={(e)=> setLng(e.target.value)}
-          /> */}
-        <div className="postForm__labelsDiv">
-          <label>Content</label>
-        </div>
-          <textarea className="postForm__fields postForm__textarea"
-            name='Content'
-            type='text'
-            // placeholder='Content'
-            value={content}
-            onChange={(e)=> setContent(e.target.value)}
-            required
-          />
-        <div className="postForm__labelsDiv">
-          <label>Image Url</label>
-        </div>
-          <input className="postForm__fields"
-            name='Image-Url'
-            type='text'
-            // placeholder='Image Url'
-            value={imageUrl}
-            onChange={(e)=> setImageUrl(e.target.value)}
-            required
-          />
-        <div className="postForm__labelsDiv">
-          <label>category</label>
-        </div>
-        <div
-          className="postForm__selectDiv"
-          >
-          <select value={cate} onChange={(e) => setCate(e.target.value)} required>
-            {optionsList.map((el, i) => (
-              <option key={i} value={el}>{el}</option>
-            ))}
-          </select>
-        </div>
-        <div className="postForm__btnDiv">
-          <button type='submit'>Create Post!</button>
+        <div className="postForm__splitDiv">
+          {/* <div>
+            <label>Latitude</label>
+          </div>
+            <input
+              name='Latitude'
+              placeholder='Latitude'
+              value={lat}
+              onChange={(e)=> setLat(e.target.value)}
+            />
+          <div>
+            <label>Longitude</label>
+          </div>
+            <input
+              name='Longitude'
+              placeholder='Longitude'
+              value={lng}
+              onChange={(e)=> setLng(e.target.value)}
+            /> */}
+          <div className="postForm__labelsDiv">
+            <label>Content</label>
+          </div>
+            <textarea className="postForm__fields postForm__textarea"
+              name='Content'
+              type='text'
+              // placeholder='Content'
+              value={content}
+              onChange={(e)=> setContent(e.target.value)}
+              required
+            />
+          <div className="postForm__labelsDiv">
+            <label>Image Url</label>
+          </div>
+            <input className="postForm__fields"
+              name='Image-Url'
+              type='text'
+              // placeholder='Image Url'
+              value={imageUrl}
+              onChange={(e)=> setImageUrl(e.target.value)}
+              required
+            />
+          <div className="postForm__labelsDiv">
+            <label>category</label>
+          </div>
+          <div
+            className="postForm__selectDiv"
+            >
+            <select value={cate} onChange={(e) => setCate(e.target.value)} required>
+              {optionsList.map((el, i) => (
+                <option key={i} value={el}>{el}</option>
+              ))}
+            </select>
+          </div>
+          <div className="postForm__btnDiv">
+            <button type='submit'>Create Post!</button>
+          </div>
         </div>
       </form>
     </Modal>

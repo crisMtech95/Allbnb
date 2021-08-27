@@ -25,7 +25,9 @@ function SinglePost() {
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
     const imagesList = useSelector(state => Object.values(state.images))
+    const reservations = useSelector(state => Object.values(state.reservations))
     const { postId }  = useParams();
+    let [foundRes, setFoundRes] = useState(undefined)
     // const [post, setPost] = useState()
     const post = useSelector(state => state.posts && state.posts[postId]
     )
@@ -39,16 +41,27 @@ function SinglePost() {
             dispatch(getImagesThunk(postId))
         }, []);
 
-        const customModalStyles = {
-            content: {
-              top: '50%',
-              left: '50%',
-              right: 'auto',
-              bottom: 'auto',
-              marginRight: '-50%',
-              transform: 'translate(-50%, -50%)',
-            },
-          };
+    useEffect(() => {
+        if (reservations && sessionUser) {
+            reservations.forEach(obj =>{
+                if (obj.userId === sessionUser.id) {
+                    setFoundRes(true)
+                }
+
+            })
+        }
+    },  [reservations])
+
+    const customModalStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+        };
 
     return (
     <div className="SP__mainContainer">
@@ -104,10 +117,11 @@ function SinglePost() {
                 <div className="SP__reviewH2Div">
                     <h2>Reviews</h2>
                 </div>
+                {foundRes &&
                 <div className="SP__reviewFormDiv">
                 <div className="SP__reviewFormDiv2">
                     <form className="SP__reviewForm">
-                        <span>How was this experience?</span>
+                        <h5>How was this experience?</h5>
                         <div className="SP_reviewStarsDiv">
                             <ReactStars
                                 count={5}
@@ -144,6 +158,7 @@ function SinglePost() {
                     </form>
                 </div>
                 </div>
+                }
                 <div className="SP__reviewContainer">
                     {reviewsList?.map(el => (
                         <Review key={el.id} review={el}/>

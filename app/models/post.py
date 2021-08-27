@@ -92,7 +92,7 @@ class Reservation(db.Model):
             'id': self.id,
             'startTime': self.startTime,
             'endTime': self.endTime,
-            'useId': self.userId,
+            'userId': self.userId,
             'postId': self.postId,
             'post': self.post.to_dict(),
         }

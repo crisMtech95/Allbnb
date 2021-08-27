@@ -11,14 +11,18 @@ const Search = () => {
 
     return (
         <div className="Search__container">
-            <Map />
-            <div className="search__title">
-                <h2>Search Results</h2>
+            <div className="Search__bigResContainer">
+                <div className="search__title">
+                    <h2>Search Results</h2>
+                </div>
+                <div className="Search__resContainer">
+                    {searchRes?.map(post => (
+                        <Post key={post.id} post={post}/>
+                        ))}
+                </div>
             </div>
-            <div className="Search__resContainer">
-                {searchRes?.map(post => (
-                    <Post key={post.id} post={post}/>
-                ))}
+            <div className="search__mapsDiv">
+                <Map />
             </div>
         </div>
     )

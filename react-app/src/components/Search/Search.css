@@ -1,7 +1,14 @@
+.Search__container {
+    display: flex;
+}
 
+.Search__bigResContainer {
+    width: 60%;
+    height: 100vh;
+    overflow-y: scroll;
+}
 
-
-
-
-
-
+.search__mapsDiv {
+    width: 40%;
+    height: 100vh
+}

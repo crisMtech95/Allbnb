@@ -14,7 +14,7 @@ function Post({ post }) {
     return (
         <div className="post__container">
             {/* <a> */}
-                {sessionUser.id === post.userId &&
+                {sessionUser && sessionUser.id === post.userId &&
                     <div className="post__toggleBtn">
                         <button onClick={() => setShowEditMenu(!showEditMenu)} className="post__3dotsBtn">
                             <div atl="You'll never know" className="post__3dotsIcon"/>

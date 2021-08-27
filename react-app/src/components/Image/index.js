@@ -12,7 +12,7 @@ export default function Image({ image, ind, post }) {
         <div key={ind} className="SP__imageDiv" id={`SP__imageDiv${ind}`}>
             <img src={image.imageUrl} className={`SP__image`} />
             {/* <button className="image__delBtn" onClick={!showDelBtn ? openMenu : closeMenu }> */}
-            {sessionUser.id === post?.userId &&
+            {sessionUser && sessionUser.id === post?.userId &&
                 <button className="image__delBtn" onClick={()=> setShowDelModal(!showDelModal)}>
                         <div className="image__delBtnImage" />
                 </button>

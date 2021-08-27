@@ -30,7 +30,7 @@ function Review({ review }) {
 
     return (
         <div className="review__container">
-        {sessionUser.id === review.userId &&
+        {sessionUser && sessionUser.id === review.userId &&
                     <div className="review__toggleBtn">
                         <button onClick={() => setShowEditReview(!showEditReview)} className="post__3dotsBtn">
                             <div atl="You'll never know" className="post__3dotsIcon"/>

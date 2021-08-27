@@ -1,16 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { getSearchThunk } from '../../store/search';
 import "./Cities.css"
 
 const Cities = () => {
-
+    const history = useHistory()
+    const dispatch = useDispatch()
 
     return (
         <div className="homePage__citiesBigContainer">
             <div className="homePage__citiesContainer">
               <h1>Explore nearby</h1>
               <div className="homePage__cities">
-                <div className="homePage__city">
+                <div className="homePage__city"
+                  onClick={() =>{
+                    dispatch(getSearchThunk({"city": "new york"}))
+                    history.push("/search")}
+                  }>
                     <div className="homePage__cityimgDiv">
                         <img className="homePage__cityimg homePage__cityimgNyc"></img>
                     </div>
@@ -19,7 +26,11 @@ const Cities = () => {
                       <p>Capital of the World</p>
                     </div>
                 </div>
-                <div className="homePage__city">
+                <div className="homePage__city"
+                onClick={() => {
+                  dispatch(getSearchThunk({"city": "boston"}))
+                  history.push("/search")
+                  }}>
                     <div className="homePage__cityimgDiv">
                       <img className="homePage__cityimg homePage__cityimgBoston"></img>
                     </div>
@@ -29,7 +40,11 @@ const Cities = () => {
                       <p>Come for the baked beans and stay for the adcent</p>
                     </div>
                 </div>
-                <div className="homePage__city">
+                <div className="homePage__city"
+                     onClick={() => {
+                        dispatch(getSearchThunk({"city": "Philadelphia"}))
+                        history.push("/search")
+                       }}>
                     <div className="homePage__cityimgDiv">
                       <img className="homePage__cityimg homePage__cityimgPhil"></img>
                     </div>
@@ -38,7 +53,11 @@ const Cities = () => {
                       <p>Philly Cheesesteakss?</p>
                     </div>
                 </div>
-                <div className="homePage__city">
+                <div className="homePage__city"
+                     onClick={() => {
+                        dispatch(getSearchThunk({"city": "Los Angeles"}))
+                        history.push("/search")
+                       }}>
                     <div className="homePage__cityimgDiv">
                       <img className="homePage__cityimg homePage__cityimgLa"></img>
                     </div>
@@ -48,7 +67,11 @@ const Cities = () => {
                     </div>
 
                 </div>
-                <div className="homePage__city">
+                <div className="homePage__city"
+                     onClick={() => {
+                        dispatch(getSearchThunk({"city": "Miami"}))
+                        history.push("/search")
+                       }}>
                     <div className="homePage__cityimgDiv">
                         <img className="homePage__cityimg homePage__cityimgMiami"></img>
                     </div>
@@ -58,7 +81,11 @@ const Cities = () => {
                     </div>
 
                 </div>
-                <div className="homePage__city">
+                <div className="homePage__city"
+                     onClick={() => {
+                        dispatch(getSearchThunk({"city": "Houston"}))
+                        history.push("/search")
+                       }}>
 
                     <div className="homePage__cityimgDiv">
                         <img className="homePage__cityimg homePage__cityimgHus"></img>

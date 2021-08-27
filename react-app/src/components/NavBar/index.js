@@ -13,6 +13,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   const sessionUser = useSelector(state => state.session.user)
   const [showBtns, setShowBtns] = useState(false)
   const [searchInput, setSearchInput] = useState("")
+  const searchVals = useSelector(state => state.search)
   let menuRef = useRef()
   let btnRef = useRef()
 
@@ -36,7 +37,12 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
   return (
     <nav className="nav__bigContainer">
           <div className='navBar__homeIconLink'>
-            <NavLink to='/' exact={true}>
+            <NavLink to='/' exact={true} onClick={() => {
+              if (searchVals) {
+                setSearchInput("")
+                dispatch(getSearchThunk({"city": ""}))
+              }
+              }}>
               <div className={location.pathname === "/" ? "navBar__homeIconWhite navBar__homeIcon" : "navBar__homeIconBlue navBar__homeIcon"}></div>
             </NavLink>
           </div>

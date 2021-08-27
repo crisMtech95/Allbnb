@@ -54,7 +54,7 @@ function SinglePost() {
     <div className="SP__mainContainer">
         <div className="SP__container">
             <div className="SP__imagesBigCon">
-                    {sessionUser?.id === post?.userId &&
+                    {sessionUser && sessionUser.id === post?.userId &&
                     <button
                         className="SP__addImgDiv"
                         onClick={() => setShowAddImgModal(!showAddImgModal)}
@@ -107,6 +107,7 @@ function SinglePost() {
                 <div className="SP__reviewFormDiv">
                 <div className="SP__reviewFormDiv2">
                     <form className="SP__reviewForm">
+                        <span>How was this experience?</span>
                         <div className="SP_reviewStarsDiv">
                             <ReactStars
                                 count={5}
@@ -125,7 +126,7 @@ function SinglePost() {
                             required
                             >
                         </textarea>
-                        <button
+                        <button className="SP__resBtn"
                             onClick={(e) => {
                                 if (comment.length > 0 && starsCount > 0) {
                                     e.preventDefault()

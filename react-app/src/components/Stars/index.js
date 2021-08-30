@@ -2,7 +2,7 @@ import ReactStars from 'react-rating-stars-component';
 
 
 export default function Stars({ avg }) {
-    console.log("THIS IS THE AVE FROM sTARS", avg)
+    // console.log("THIS IS THE AVE FROM sTARS", avg)
 
     return (
         <div className="Stars__container">
@@ -12,7 +12,7 @@ export default function Stars({ avg }) {
                 edit={false}
                 value={avg}
             />
-            
+
         </div>
     )
 }

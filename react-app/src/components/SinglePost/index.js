@@ -16,6 +16,7 @@ import Modal from 'react-modal'
 import { delImageThunk } from '../../store/images'
 import Image from '../Image';
 import DelImgModal from '../DelImgModal';
+import Stars from '../Stars';
 
 function SinglePost() {
     const dispatch = useDispatch()
@@ -129,13 +130,7 @@ function SinglePost() {
                 <div className="SP__reviewH2Div">
                     <h2>Reviews</h2>
                     {reviewAvg > 0 &&
-                        <ReactStars
-                            count={5}
-                            size={30}
-                            edit={false}
-                            value={reviewAvg}
-
-                            />
+                        <Stars avg={reviewAvg}/>
                     }
                 </div>
                 {foundRes && reservations.length > 0 &&

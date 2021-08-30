@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     imageUrl = db.Column(db.String(3000))
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    content = db.Column(db.String(1000))
     leaser = db.Column(db.Boolean(), nullable=False, default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
@@ -36,5 +37,6 @@ class User(db.Model, UserMixin):
             'imageUrl': self.imageUrl,
             'username': self.username,
             'email': self.email,
+            'content': self.content,
             'leaser': self.leaser,
         }

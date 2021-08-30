@@ -8,6 +8,7 @@
 }
 .homePage__citiesContainer {
     font-family: sans-serif;
+    width: 90%;
 }
 
 .homePage__cities {
@@ -18,7 +19,7 @@
     /* height: 100%; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content:space-evenly;
 }
 .homePage__city {
     display: flex;

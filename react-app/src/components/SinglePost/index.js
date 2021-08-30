@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReservationForm from '../ReservationForm';
 import { getReservationsThunk } from '../../store/reservations';
-import { getReviewsThunk } from '../../store/reviews';
+import reviewsReducer, { getReviewsThunk } from '../../store/reviews';
 import { getSinglePostThunk } from '../../store/post';
 import { getImagesThunk } from '../../store/images';
 import Review from '../Review'
@@ -28,6 +28,7 @@ function SinglePost() {
     const reservations = useSelector(state => Object.values(state.reservations))
     const { postId }  = useParams();
     const [foundRes, setFoundRes] = useState(false)
+    const [reviewAvg, setReviewAvg] = useState(0)
     const post = useSelector(state => state.posts && state.posts[postId])
     const [comment, setComment] = useState("")
 
@@ -50,6 +51,18 @@ function SinglePost() {
             })
         }
     },  [reservations])
+
+    useEffect(() => {
+        if (reviewsList.length) {
+            let total = reviewsList.reduce((acc, el) => {
+                return acc + el.stars
+            }, reviewsList[0].stars)
+            let average = Math.floor(total / reviewsList.length - 1)
+
+            setReviewAvg(average)
+            console.log(reviewAvg)
+        }
+    }, [reviewsList])
 
     const customModalStyles = {
         content: {
@@ -115,6 +128,15 @@ function SinglePost() {
             <div className="SP__reviewsMainCon">
                 <div className="SP__reviewH2Div">
                     <h2>Reviews</h2>
+                    {reviewAvg > 0 &&
+                        <ReactStars
+                            count={5}
+                            size={30}
+                            edit={false}
+                            value={reviewAvg}
+
+                            />
+                    }
                 </div>
                 {foundRes && reservations.length > 0 &&
                 <div className="SP__reviewFormDiv">

@@ -36,7 +36,8 @@ def editRev():
 
 @reviews_routes.route("", methods=["DELETE"])
 def delRev():
+
     rev = Review.query.get(request.json['id'])
     db.session.delete(rev)
     db.session.commit()
-    return {"id": rev.to_dict()['id']}
+    return {"id": request.json['id']}

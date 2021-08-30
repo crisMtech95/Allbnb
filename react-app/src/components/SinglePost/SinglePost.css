@@ -174,7 +174,7 @@
 .SP__reviewContainer {
     display: flex;
     flex-direction: column-reverse;
-    width: 60%;
+    width: 100%;
 }
 .image__delBtn {
     width: 33px;

@@ -53,16 +53,20 @@ function Review({ review }) {
                         }
                     </div>
                 }
-        <form>
-        <ReactStars
-            count={5}
-            value={stars}
-            onChange={(currentStars) => setStars(currentStars)}
-            size={30}
-            edit={showEditBtn}
-            required
-            // isHalf={true}
-        ></ReactStars>
+        <div className="review__userImgDiv"><img src={review.user.imageUrl}/></div>
+        <div className="review__contentDiv">
+        <div className="review__upperDiv">
+            <div>{review.user.username}</div>
+            <ReactStars
+                count={5}
+                value={stars}
+                onChange={(currentStars) => setStars(currentStars)}
+                size={30}
+                edit={showEditBtn}
+                required
+                // isHalf={true}
+            ></ReactStars>
+        </div>
         <textarea className="review__commentTextArea"
             ref={focusTextarea}
             value={comment}
@@ -91,7 +95,7 @@ function Review({ review }) {
             </div>
         }
 
-        </form>
+        </div>
     </div>
     );
 }

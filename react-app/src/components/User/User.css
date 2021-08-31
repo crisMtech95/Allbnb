@@ -15,8 +15,9 @@
 .user__upperContainer {
     width: 100%;
     height: 45vh;
-    min-height: 300px;
-    background: linear-gradient(to right top,#65dfc9, #6cdbeb);
+    min-height: 330px;
+    background: linear-gradient(to right top,#6cdbeb, #65dfc9, #15EBB9);
+    /* #6cdbeb old color */
     display: flex;
     justify-content: center;
 }
@@ -70,16 +71,20 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 30px;
+    height: 26px;
     position: absolute;
     bottom: 0;
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
+    border-top: solid 1px white;
 }
 .user__btnsDiv {
     display: flex;
     flex-direction: column;
+}
+.user__btnsDiv:hover {
+    cursor: pointer;
 }
 .user__btnsUnderlines {
     background-color: white;
@@ -92,3 +97,35 @@
     justify-content: center;
     border-bottom: solid 7px white;
 } */
+.user__contentMainDiv {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.user__contentDiv {
+    width: 80%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+
+    box-shadow: 0 0 10px 5px rgb(207, 207, 207);
+}
+.user__bioIconDiv {
+    background: linear-gradient(to right top,#6cdbeb, #65dfc9, #15EBB9);
+    height: 100%;
+    /* width: 100px; */
+    min-width: 100px;
+}
+.user__pTagDiv {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    justify-content: space-around;
+}
+.user__contentDiv p {
+    margin: 20px;
+    height: 100%;
+
+}

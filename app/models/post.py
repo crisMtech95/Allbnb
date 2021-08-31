@@ -36,9 +36,10 @@ class Post(db.Model):
             'content': self.content,
             'userId': self.userId,
             'categoryId': self.categoryId,
+            "category": self.type.to_dict(),
             'images': [img.to_dict() for img in self.image],
             # 'reservations': [r.to_dict() for r in self.reservation],
-            # 'reviews': [r.to_dict() for r in self.reviews]
+            'reviews': [r.to_dict() for r in self.reviews]
         }
 
 
@@ -54,7 +55,7 @@ class Category(db.Model):
         return {
             'id': self.id,
             'type': self.type,
-            'post': [p.to_dict() for p in self.post]
+            # 'post': [p.to_dict() for p in self.post]
         }
 
 

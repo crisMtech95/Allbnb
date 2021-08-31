@@ -7,6 +7,7 @@ import { getUserReservationsThunk } from '../../store/reservations';
 import Reservation from '../Reservation'
 import './User.css'
 import Post from '../Post';
+import ReactStars from 'react-rating-stars-component'
 
 
 function User() {
@@ -17,6 +18,8 @@ function User() {
   const { userId }  = useParams();
   const userPosts = useSelector(state => Object.values(state.posts))
   const userRes = useSelector(state => Object.values(state.reservations))
+  const [rating, setRating] = useState(null)
+  const [uniqueType, setUniqueType] = useState([])
 
   useEffect(() => {
     document.title = "Allbnb - user"
@@ -35,6 +38,24 @@ function User() {
     })();
   }, [userId]);
 
+  useEffect(() => {
+    if (userPosts.length) {
+      let length = 0;
+      let total = 0;
+      userPosts.forEach(post => {
+        if (!uniqueType.includes(post.category.type)) {
+            uniqueType.push(post.category.type)
+        }
+        post.reviews.forEach(el => {
+          total += el.stars
+          length++
+        })
+      })
+      setRating(total / length)
+      // console.log(rating)
+    }
+  }, [userPosts])
+
   if (!user) {
     return null;
   }
@@ -48,6 +69,15 @@ function User() {
           <div className="user__upperInfo">
             <img className="user__upperImg" src={user.imageUrl}/>
             <div>{user.fullName}</div>
+            <div>
+            {rating &&
+              <ReactStars
+                count={5}
+                value={rating}
+                size={24}
+                edit={false}/>
+            }
+            </div>
             <div className="user__upperShowMenu">
               <div
                 onClick={() => setContentShow("content")}
@@ -75,18 +105,60 @@ function User() {
           <div className="user__upperCircle circle2"></div>
           <div className="user__upperCircle circle1"></div>
         </div>
-
       </div>
-      <div className="user__reservationsBigContainer">
-        {userRes?.map(reservation => (
-          <Reservation key={reservation.id} reservation={reservation}/>
-        ))}
-      </div>
-      <div className="user__postsBigContainer">
-        {userPosts?.map(post => (
-          <Post key={post.id} post={post} />
-        ))}
-      </div>
+      {contentShow === "content" && user.content &&
+        <div>
+          <div className="user__contentMainDiv">
+            <div className="user__contentDiv">
+              <div className="user__bioIconDiv"></div>
+              <div className="user__pTagDiv">
+                <p>
+                  {user.content}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="user__contentMainDiv">
+            <div className="user__contentDiv">
+              <div className="user__bioIconDiv"></div>
+              <div className="user__pTagDiv">
+                {userPosts && uniqueType.length > 0 && uniqueType.map((type, i) => (
+                  <div key={i}>
+                    <p>{type}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="user__contentMainDiv">
+            <div className="user__contentDiv">
+              <div className="user__bioIconDiv"></div>
+              <div className="user__pTagDiv">
+                <p>
+                email: {user.email}
+                </p>
+                <p>
+                  phone Number: N/A
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      {contentShow === "reservations" &&
+        <div className="user__reservationsBigContainer">
+          {userRes?.map(reservation => (
+            <Reservation key={reservation.id} reservation={reservation}/>
+          ))}
+        </div>
+      }
+      {contentShow === "items" &&
+        <div className="user__postsBigContainer">
+          {userPosts?.map(post => (
+            <Post key={post.id} post={post} />
+          ))}
+        </div>
+      }
     </div>
 
 

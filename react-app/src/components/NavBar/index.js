@@ -43,14 +43,14 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
                 dispatch(getSearchThunk({"city": ""}))
               }
               }}>
-              <div className={location.pathname === "/" ? "navBar__homeIconWhite navBar__homeIcon" : "navBar__homeIconBlue navBar__homeIcon"}></div>
+              <div className={location.pathname === "/" || location.pathname.startsWith("/users") ? "navBar__homeIconWhite navBar__homeIcon" : "navBar__homeIconBlue navBar__homeIcon"}></div>
             </NavLink>
           </div>
           <div id="navBar__searchDiv">
             <div className="navBar__searchDiv2">
-              <div className="navBar__searchDropDown">
+              {/* <div className="navBar__searchDropDown">
                 <select><option></option></select>
-              </div>
+              </div> */}
               <input id="searchBar" value={searchInput} type="search"
                       onChange={(e) => setSearchInput(e.target.value)}
                       onClick={(e) => history.push("/search")}
@@ -67,7 +67,7 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
           <button className="navBar__userIconBtn" ref={btnRef}
               onClick={() => setShowBtns(!showBtns)}
           >
-            <div className={location.pathname === "/" ? "navBar__userIconWhite navBar__userIcon" : "navBar__userIconBlue navBar__userIcon"} />
+            <div className={location.pathname === "/" || location.pathname.startsWith("/users") ? "navBar__userIconWhite navBar__userIcon" : "navBar__userIconBlue navBar__userIcon"} />
           </button>
           {showBtns &&
           <div className="navBar__userAuth">

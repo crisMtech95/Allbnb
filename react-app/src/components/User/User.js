@@ -13,6 +13,7 @@ function User() {
   const dispatch = useDispatch()
   const [user, setUser] = useState({});
   // const [userPost, setUserPost] = useState({});
+  const [contentShow, setContentShow] = useState("content")
   const { userId }  = useParams();
   const userPosts = useSelector(state => Object.values(state.posts))
   const userRes = useSelector(state => Object.values(state.reservations))
@@ -42,10 +43,39 @@ function User() {
 
   return (
     <div className="mainContainer">
-      <div>
-        <strong>User Id</strong> {userId}
-        <strong>Username</strong> {user.username}
-        <strong>Email</strong> {user.email}
+      <div className="user__upperContainer">
+        <div className="user__upperGlass">
+          <div className="user__upperInfo">
+            <img className="user__upperImg" src={user.imageUrl}/>
+            <div>{user.fullName}</div>
+            <div className="user__upperShowMenu">
+              <div
+                onClick={() => setContentShow("content")}
+                className="user__btnsDiv"
+                >
+                <div>Content</div>
+                <div className={contentShow === "content" ? "user__btnsUnderlines" : "" }></div>
+              </div>
+              <div
+                onClick={() => setContentShow("items")}
+                className="user__btnsDiv"
+                >
+                <div>Items</div>
+                <div className={contentShow === "items" ? "user__btnsUnderlines" : "" }></div>
+              </div>
+              <div
+                onClick={() => setContentShow("reservations")}
+                className="user__btnsDiv"
+                >
+                <div>Reservations</div>
+                <div className={contentShow === "reservations" ? "user__btnsUnderlines" : "" }></div>
+              </div>
+            </div>
+          </div>
+          <div className="user__upperCircle circle2"></div>
+          <div className="user__upperCircle circle1"></div>
+        </div>
+
       </div>
       <div className="user__reservationsBigContainer">
         {userRes?.map(reservation => (

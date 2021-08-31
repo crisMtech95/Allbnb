@@ -60,7 +60,6 @@ function SinglePost() {
             let average = Math.floor(total / reviewsList.length - 1)
 
             setReviewAvg(average)
-            console.log(reviewAvg)
         }
     }, [reviewsList])
 

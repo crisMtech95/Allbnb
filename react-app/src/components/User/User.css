@@ -112,12 +112,6 @@
 
     box-shadow: 0 0 10px 5px rgb(207, 207, 207);
 }
-.user__bioIconDiv {
-    background: linear-gradient(to right top,#6cdbeb, #65dfc9, #15EBB9);
-    height: 100%;
-    /* width: 100px; */
-    min-width: 100px;
-}
 .user__pTagDiv {
     width: 90%;
     height: max-content;
@@ -127,5 +121,36 @@
 .user__contentDiv p {
     margin: 20px;
     height: 100%;
+}
+.user__bioIconDivbg {
+    background: linear-gradient(to right top,#6cdbeb, #65dfc9, #15EBB9);
 
+    height: 100%;
+    /* width: 100px; */
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.user__bioIconDiv {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+.user__bioIconImg {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.user__contentImg {
+    background-image: url("../../icons/textWhite.svg");
+}
+.user__typeImg {
+    background-image: url("../../icons/listWhite.svg");
+}
+.user__userImg {
+    background-image: url("../../icons/userwhite.svg");
 }

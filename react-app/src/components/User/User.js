@@ -110,7 +110,11 @@ function User() {
         <div>
           <div className="user__contentMainDiv">
             <div className="user__contentDiv">
-              <div className="user__bioIconDiv"></div>
+              <div className="user__bioIconDivbg">
+                <div className="user__bioIconDiv">
+                  <div className="user__bioIconImg user__contentImg"></div>
+                </div>
+              </div>
               <div className="user__pTagDiv">
                 <p>
                   {user.content}
@@ -120,7 +124,11 @@ function User() {
           </div>
           <div className="user__contentMainDiv">
             <div className="user__contentDiv">
-              <div className="user__bioIconDiv"></div>
+              <div className="user__bioIconDivbg">
+                <div className="user__bioIconDiv">
+                  <div className="user__bioIconImg user__typeImg"></div>
+                </div>
+              </div>
               <div className="user__pTagDiv">
                 {userPosts && uniqueType.length > 0 && uniqueType.map((type, i) => (
                   <div key={i}>
@@ -132,7 +140,11 @@ function User() {
           </div>
           <div className="user__contentMainDiv">
             <div className="user__contentDiv">
-              <div className="user__bioIconDiv"></div>
+              <div className="user__bioIconDivbg">
+                <div className="user__bioIconDiv">
+                  <div className="user__bioIconImg user__userImg"></div>
+                </div>
+              </div>
               <div className="user__pTagDiv">
                 <p>
                 email: {user.email}

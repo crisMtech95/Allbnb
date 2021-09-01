@@ -115,10 +115,16 @@ function User() {
                   <div className="user__bioIconImg user__contentImg"></div>
                 </div>
               </div>
-              <div className="user__pTagDiv">
-                <p>
-                  {user.content}
-                </p>
+              <div className="user__content">
+                <div className="user__contentTitleDiv">
+                  <div className="user__contentTitle">Description</div>
+                </div>
+                <div className="user__pTagDiv">
+
+                  <p>
+                    {user.content}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -129,12 +135,17 @@ function User() {
                   <div className="user__bioIconImg user__typeImg"></div>
                 </div>
               </div>
-              <div className="user__pTagDiv">
-                {userPosts && uniqueType.length > 0 && uniqueType.map((type, i) => (
-                  <div key={i}>
-                    <p>{type}</p>
-                  </div>
-                ))}
+              <div className="user__content">
+                <div className="user__contentTitleDiv">
+                  <div className="user__contentTitle">Items types</div>
+                </div>
+                <div className="user__pTagDiv">
+                  {userPosts && uniqueType.length > 0 && uniqueType.map((type, i) => (
+                    <div key={i} className="user__postTypes">
+                      <p>{type}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -145,13 +156,14 @@ function User() {
                   <div className="user__bioIconImg user__userImg"></div>
                 </div>
               </div>
-              <div className="user__pTagDiv">
-                <p>
-                email: {user.email}
-                </p>
-                <p>
-                  phone Number: N/A
-                </p>
+              <div className="user__content">
+                <div className="user__contentTitleDiv">
+                  <div className="user__contentTitle">Contact</div>
+                </div>
+                <div className="user__pTagDiv">
+                  <strong>email :</strong> <p>{user.email}</p>
+                  <strong>phone Number :</strong><p>N/A</p>
+                </div>
               </div>
             </div>
           </div>

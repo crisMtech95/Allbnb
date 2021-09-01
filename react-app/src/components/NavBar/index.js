@@ -60,14 +60,23 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
                         }}
                       placeholder="State, city or town"
                       />
-              <div className="navBar__searchIcon"></div>
+              <div className="navBar__searchIconDiv">
+                <div className="navBar__searchIcon"></div>
+              </div>
 
             </div>
           </div>
           <button className="navBar__userIconBtn" ref={btnRef}
               onClick={() => setShowBtns(!showBtns)}
           >
+            {sessionUser ?
+            <div className="navBar__sessionUserDiv">
+              <div className="navBar__sessionUserImgDiv"><div className="navBar__sessionUserImg"/></div>
+              <div className="navBar__sessionUserImgDiv"><img src={sessionUser.imageUrl}/></div>
+            </div> :
+
             <div className={location.pathname === "/" || location.pathname.startsWith("/users") ? "navBar__userIconWhite navBar__userIcon" : "navBar__userIconBlue navBar__userIcon"} />
+            }
           </button>
           {showBtns &&
           <div className="navBar__userAuth">

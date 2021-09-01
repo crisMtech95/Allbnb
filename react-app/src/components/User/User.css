@@ -116,6 +116,7 @@
     width: 100%;
     height: max-content;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 .user__pTagDiv > p {
@@ -123,7 +124,11 @@
 }
 .user__contentDiv p {
     margin: 20px;
-    height: 100%;
+    /* height: 100%; */
+}
+.user__contentDiv strong {
+    margin: 20px;
+    /* height: 100%; */
 }
 .user__bioIconDivbg {
     background: linear-gradient(to right top,#6cdbeb, #65dfc9, #15EBB9);

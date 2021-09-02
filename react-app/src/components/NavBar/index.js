@@ -30,9 +30,9 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
       document.removeEventListener("mousedown", clickOutside)
     }
   }, [])
-  useEffect(() => {
-    console.log(menuRef)
-  }, [menuRef])
+  // useEffect(() => {
+  //   console.log(menuRef)
+  // }, [menuRef])
 
   return (
     <nav className="nav__bigContainer">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Post.css'
@@ -10,6 +10,21 @@ function Post({ post }) {
     const [showEditMenu, setShowEditMenu] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
+    const editMenuRef = useRef()
+
+    useEffect(() => {
+        const clickOut = e => {
+            if (!editMenuRef?.current?.contains(e.target)) {
+                setShowEditMenu(false)
+            }
+        }
+        document.addEventListener("mousedown", clickOut)
+
+        return () => {
+            document.removeEventListener("mousedown", clickOut)
+        }
+    }, [])
+
 
     return (
         <div className="post__container">
@@ -20,7 +35,7 @@ function Post({ post }) {
                             <div atl="You'll never know" className="post__3dotsIcon"/>
                         </button>
                         {showEditMenu &&
-                            <div className="post__btnsDiv">
+                            <div className="post__btnsDiv" ref={editMenuRef}>
                                 <button
                                     onClick={() => setShowEditModal(!showEditModal)}
                                 >Edit Post</button>
@@ -58,5 +73,3 @@ function Post({ post }) {
     )
 }
 export default Post;
-
-

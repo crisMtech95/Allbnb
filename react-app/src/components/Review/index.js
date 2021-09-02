@@ -9,6 +9,7 @@ import { delReviewThunk, editReviewThunk } from '../../store/reviews'
 function Review({ review }) {
     const dispatch = useDispatch()
     const focusTextarea = useRef();
+    const editReviewRef = useRef();
     const [showEditReview, setShowEditReview] = useState(false)
     const [showEditBtn, setShowEditBtn] = useState(false)
     const [disableSubmit, setDisableSubmit] = useState(false)
@@ -28,6 +29,19 @@ function Review({ review }) {
         }
     }, [comment])
 
+    useEffect(() => {
+        const clickOutSide = (e) => {
+            if (!editReviewRef?.current?.contains(e.target)) {
+                setShowEditReview(false)
+            }
+        }
+        document.addEventListener("mousedown", clickOutSide)
+
+        return () => {
+            document.removeEventListener("mousedown", clickOutSide)
+        }
+    }, [])
+
     return (
         <div className="review__container">
         {sessionUser && sessionUser.id === review.userId &&
@@ -36,7 +50,7 @@ function Review({ review }) {
                             <div atl="You'll never know" className="post__3dotsIcon"/>
                         </button>
                         {showEditReview &&
-                            <div className="review__editForm">
+                            <div className="review__editForm" ref={editReviewRef}>
                                 <button
                                     onClick={() => {
                                         setShowEditBtn(true)

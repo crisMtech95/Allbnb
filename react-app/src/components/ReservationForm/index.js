@@ -9,12 +9,14 @@ import 'react-calendar/dist/Calendar.css';
 
 function ReservationForm({ postId, price }) {
     const dispatch = useDispatch()
-    const [date, setDate] = useState();
+    const [dates, setDates] = useState();
     const sessionUser = useSelector(state => state.session.user)
     const reservations = useSelector(state => Object.values(state.reservations))
     let [total, setTotal] = useState(price ? price : 0)
 
     const fillDate = (startDay, endDay) => {
+        // console.log(startDay)
+        // console.log(endDay)
         if (endDay < startDay) return;
         let newStart = startDay
         let output = []
@@ -22,6 +24,7 @@ function ReservationForm({ postId, price }) {
             output.push(new Date(newStart));
             newStart.setDate(newStart.getDate() + 1)
         }
+        // console.log(output)
         return output
     }
     const datesReservations = reservations?.map(el => {
@@ -40,6 +43,16 @@ function ReservationForm({ postId, price }) {
         return newDate
     }
 
+    useEffect(() => {
+        if (dates && dates.length > 1) {
+            if (dates[0] !== dates[1]) {
+                let resDates = fillDate(new Date(dates[0]), new Date(dates[1]))
+                setTotal((resDates.length) * total)
+                console.log(resDates)
+                console.log(dates)
+            }
+        }
+    }, [dates])
 
 
     return (
@@ -47,8 +60,8 @@ function ReservationForm({ postId, price }) {
         {datesReservations &&
             <Calendar
                 // showWeekNumbers={false}
-                onChange={setDate}
-                value={date}
+                onChange={setDates}
+                value={dates}
                 selectRange={true}
                 tileDisabled={({date, view}) =>
                         datesReservations.some(disabledDate =>
@@ -68,14 +81,24 @@ function ReservationForm({ postId, price }) {
                     dispatch(addResThunk({
                         "userId": sessionUser.id,
                         "postId": postId,
-                        "startTime": formattingDates(date[0]),
-                        "endTime": formattingDates(date[1])
+                        "startTime": formattingDates(dates[0]),
+                        "endTime": formattingDates(dates[1])
                     }))
                 }}
             >New Reservation</button>
             <div className="SP__resTotalDiv">
                 <div className="SP__resTotal">Total :</div>
-                <div className="SP__resPrice">${total}</div>
+                {/* {date && date.length < 1 ?
+                    <div className="SP__resPrice">${total}</div> :
+                    <div className="SP__resPrice">
+                        {date[0] === date[1] ? "$" + total : "$" + date.length * total}
+                    </div>
+                } */}
+
+                <div className="SP__resPrice">
+                    ${total}
+                </div>
+
             </div>
         </div>
     </div>

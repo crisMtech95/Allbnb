@@ -48,8 +48,8 @@ function Post({ post }) {
                     <div className="post__h4Div">
                         <h4>{post?.address}</h4>
                     </div>
-                    <div className="post__h4Div">
-                        <h4>{post?.price}</h4>
+                    <div className="post__priceDiv">
+                        <div>${post?.price}/</div><span>24hrs</span>
                     </div>
 
                 </div>
@@ -58,3 +58,5 @@ function Post({ post }) {
     )
 }
 export default Post;
+
+

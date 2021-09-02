@@ -98,7 +98,10 @@ function SinglePost() {
             </div>
             <div className="SP__splittingCon">
                 <div className="SP__infoCon">
-                    <h2>{post?.title}</h2>
+                    <div className="SP__infoTop">
+                        <h2>{post?.title}</h2>
+                        <div>${post?.price}/<p>24hrs</p></div>
+                    </div>
                     <div className="SP__imgagesDiv" id="SP__imgsfirstDiv">
                         <div className="SP__stateImg SP__images"></div>
                         <h2>{post?.state}</h2>
@@ -116,7 +119,9 @@ function SinglePost() {
 
                 <div className="SP__resFormCon">
                     <div>Click twice for start and ending date</div>
-                    <ReservationForm postId={postId} />
+                    {post &&
+                        <ReservationForm postId={postId} price={post.price}/>
+                    }
                 </div>
             </div>
         {/* <div>
@@ -191,3 +196,4 @@ function SinglePost() {
     );
 }
 export default SinglePost;
+

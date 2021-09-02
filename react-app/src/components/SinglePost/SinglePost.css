@@ -48,6 +48,25 @@
 .SP__infoCon {
     width: 50%;
 }
+.SP__infoTop {
+    display: flex;
+    width: 100%;
+}
+.SP__infoTop h2 {
+    width: 85%;
+}
+.SP__infoTop div {
+    width: 65px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.SP__infoTop p {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(121, 115, 115);
+}
 .SP__resFormCon {
     margin-bottom: 20px;
     width: 350px;
@@ -236,3 +255,4 @@
     justify-content: center;
     align-items: center;
 }
+

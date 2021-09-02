@@ -4,8 +4,13 @@
     display: flex;
     border-radius: 20px;
     margin: 8px;
+    box-shadow: -0.5px 0.5px 10px 4px rgba(0,0,0,0.2);
 }
-
+.post__contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .post__imageDiv {
     width: 300px;
     margin: 10px;
@@ -60,3 +65,24 @@
     background-color: rgb(243, 240, 240);
     cursor: pointer;
 }
+.post__priceDiv {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.post__priceDiv div {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+.post__priceDiv span {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(121, 115, 115);
+}
+
+

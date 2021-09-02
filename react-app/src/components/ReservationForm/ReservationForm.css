@@ -7,6 +7,10 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    max-width: 70px;
+}
+.SP__resTotalDiv {
+    margin: 5px
 }
 .SP__resTotal {
     font-size: 18px;
@@ -15,4 +19,22 @@
 .SP__resPrice {
     font-size: 16px;
     font-weight: 500;
+}
+.SP__cancelBtn {
+    width: 30%;
+    margin: 20px 5px 10px 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-image: linear-gradient(to top, rgba(145, 149, 151, 0.7), #353837, #353837);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: hover 2s ease-in-out;
+}
+.SP__cancelBtn:hover {
+    background-image: linear-gradient(to bottom, rgba(161, 166, 168, 0.7), #606463, #606463);
+
 }

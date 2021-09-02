@@ -75,7 +75,14 @@ function ReservationForm({ postId, price }) {
                 />
         }
         <div className="SP__resBottomDiv">
-
+            <button
+                className="SP__cancelBtn"
+                onClick={()=> {
+                    setDates(null)
+                    setTotal(price)
+                }}>
+                Cancel
+            </button>
             <button className="SP__resBtn"
                 onClick={() => {
                     dispatch(addResThunk({

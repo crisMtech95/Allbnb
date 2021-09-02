@@ -7,12 +7,12 @@ import './ReservationForm.css'
 import 'react-calendar/dist/Calendar.css';
 
 
-function ReservationForm({ postId }) {
+function ReservationForm({ postId, price }) {
     const dispatch = useDispatch()
     const [date, setDate] = useState();
     const sessionUser = useSelector(state => state.session.user)
     const reservations = useSelector(state => Object.values(state.reservations))
-
+    let [total, setTotal] = useState(price ? price : 0)
 
     const fillDate = (startDay, endDay) => {
         if (endDay < startDay) return;
@@ -40,7 +40,7 @@ function ReservationForm({ postId }) {
         return newDate
     }
 
-    
+
 
     return (
     <div className="Re__mainContainer">
@@ -61,16 +61,23 @@ function ReservationForm({ postId }) {
                 // formatLongDate={(locale, date) => formatDate(date, 'dd MMM YYYY')}
                 />
         }
-        <button className="SP__resBtn"
-            onClick={() => {
-                dispatch(addResThunk({
-                    "userId": sessionUser.id,
-                    "postId": postId,
-                    "startTime": formattingDates(date[0]),
-                    "endTime": formattingDates(date[1])
-                }))
-            }}
-        >New Reservation</button>
+        <div className="SP__resBottomDiv">
+
+            <button className="SP__resBtn"
+                onClick={() => {
+                    dispatch(addResThunk({
+                        "userId": sessionUser.id,
+                        "postId": postId,
+                        "startTime": formattingDates(date[0]),
+                        "endTime": formattingDates(date[1])
+                    }))
+                }}
+            >New Reservation</button>
+            <div className="SP__resTotalDiv">
+                <div className="SP__resTotal">Total :</div>
+                <div className="SP__resPrice">${total}</div>
+            </div>
+        </div>
     </div>
   );
 }

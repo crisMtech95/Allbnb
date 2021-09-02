@@ -2,3 +2,17 @@
     /* border-radius: 8px; */
     /* box-shadow: 0 0 10px 5px rgb(207, 207, 207); */
 }
+.SP__resBottomDiv {
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+.SP__resTotal {
+    font-size: 18px;
+    font-weight: 550;
+}
+.SP__resPrice {
+    font-size: 16px;
+    font-weight: 500;
+}

@@ -17,25 +17,19 @@ const Search = ({ searchInput }) => {
     const [detectChange, setDetectChange] = useState(false)
     const [price, setPrice] = useState(0)
 
+
+    // filtering by price and type of items
     useEffect(async() => {
-        // console.log(filteredBy)
        let result =  await dispatch(getSearchThunk({"city": searchInput}))
 
        if (filteredBy.length && price > 0) {
-           // console.log("THIS IS THE RESULT", result)
            let filtered = result.search.filter(el => el.price <= price && filteredBy.includes(el.category.type))
-           console.log("THIS IS THE FILTERED LIST", filtered)
            await dispatch(getSearch({"search": filtered }))
         } else if (filteredBy.length) {
-           // console.log(searchInput)
-           console.log("THIS IS THE TYPE VALUES TO FILTER", filteredBy)
            let filtered = result.search.filter(el => filteredBy.includes(el.category.type))
-           // console.log("THIS IS THE FILTERED LIST", filtered)
            await dispatch(getSearch({"search": filtered }))
        } else if (price > 0) {
-            // console.log("THIS IS THE RESULT", result)
             let filtered = result.search.filter(el => el.price <= price)
-            console.log("THIS IS THE FILTERED LIST", filtered)
             await dispatch(getSearch({"search": filtered }))
         } else {
             await dispatch(getSearchThunk({"city": searchInput}))
@@ -49,40 +43,38 @@ const Search = ({ searchInput }) => {
                     <h2>Search Results:</h2>
                 </div>
                 <div className="Search__resContainer">
-                    <div className="Search__filterContainer">
-                        <div>
-                            <button
-                                className="Search__labelsDiv"
-                                onClick={() => setShowList(!showList)}>
-                                <label>category</label>
-                            </button>
-                        </div>
-                        <div>
-                            <button
-                                className="Search__labelsDiv"
-                                onClick={() => setShowPrice(!showPrice)}>
-                                <label>Price</label>
-                            </button>
-                        </div>
-                        {showPrice &&
-                            <div className="Search__rangeDiv">
-                                <div className="Search__currentPrice">${price}</div>
-                                <p>$0</p>
-                                <input
-                                    type="range"
-                                    min={0}
-                                    max={1000}
-                                    step={10}
-                                    value={price}
-                                    onChange={(e) => {
-                                        console.log(price)
-                                        setPrice(e.target.value)
-                                        console.log(price)
-                                    }}
-                                    ></input>
-                                    <p>$1000</p>
+                    <div className="Search__filterBigContainer">
+                        <div className="Search__filterContainer">
+                            <div>
+                                <button
+                                    className="Search__labelsDiv"
+                                    onClick={() => setShowList(!showList)}>
+                                    <label>category</label>
+                                </button>
                             </div>
-                        }
+                            <div>
+                                <button
+                                    className="Search__labelsDiv"
+                                    onClick={() => setShowPrice(!showPrice)}>
+                                    <label>Price</label>
+                                </button>
+                            </div>
+                            {showPrice &&
+                                <div className="Search__rangeDiv">
+                                    <div className="Search__currentPrice">${price}</div>
+                                    <p>$0</p>
+                                    <input
+                                        type="range"
+                                        min={0}
+                                        max={1000}
+                                        step={10}
+                                        value={price}
+                                        onChange={(e) => setPrice(e.target.value)}
+                                        ></input>
+                                        <p>$1000</p>
+                                </div>
+                            }
+                        </div>
                     </div>
                 {showList &&
                 <div className="Search__typesDiv">
@@ -90,8 +82,6 @@ const Search = ({ searchInput }) => {
                         <div key={i}>
                             <input type="checkbox" value={el}
                                 onChange={(e) => {
-                                    // console.log(e.target)
-                                    // console.log(e.target.checked)
                                     setDetectChange(!detectChange)
                                     if (e.target.checked) {
                                         filteredBy.push(e.target.value)
@@ -100,8 +90,6 @@ const Search = ({ searchInput }) => {
                                         let index = filteredBy.indexOf(e.target.value)
                                         filteredBy.splice(index, 1)
                                     }
-                                    // console.log("THIS IS THE FILTEREDARR", filteredBy)
-
                                 }}
                             ></input>
                             <label>{el}</label>

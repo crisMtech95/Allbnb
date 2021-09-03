@@ -36,9 +36,17 @@
     width: 190px;
     display: flex;
 }
+/* .Search__filterBigContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+} */
 .Search__filterContainer {
+    width: 90%;
     display: flex;
     align-items: center;
+    margin-left: 15px;
+    min-width: 350px;
 }
 .Search__currentPrice {
     position: absolute;

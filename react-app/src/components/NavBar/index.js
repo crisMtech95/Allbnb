@@ -6,13 +6,13 @@ import { logout, login } from "../../store/session";
 import { getSearchThunk } from "../../store/search"
 
 
-const NavBar = ({setShowLogin, setShowSignup, setShowItemForm}) => {
+const NavBar = ({setShowLogin, setShowSignup, setShowItemForm, searchInput, setSearchInput}) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
   const sessionUser = useSelector(state => state.session.user)
   const [showBtns, setShowBtns] = useState(false)
-  const [searchInput, setSearchInput] = useState("")
+  // const [searchInput, setSearchInput] = useState("")
   const searchVals = useSelector(state => state.search)
   let menuRef = useRef()
   let btnRef = useRef()

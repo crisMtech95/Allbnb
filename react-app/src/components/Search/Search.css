@@ -23,3 +23,11 @@
     font-size: 18px;
     color: rgb(139, 134, 134);
 }
+
+.Search__labelsDiv {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 5px;
+    color: rgb(121, 117, 117);
+}

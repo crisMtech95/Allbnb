@@ -22,6 +22,7 @@ function App() {
   const [showItemForm, setShowItemForm] = useState(false)
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const [searchInput, setSearchInput] = useState("")
 
   const customModalStyles = {
     content: {
@@ -50,6 +51,7 @@ function App() {
       <NavBar setShowSignup={setShowSignup}
               setShowLogin={setShowLogin}
               setShowItemForm={setShowItemForm}
+              searchInput={searchInput} setSearchInput={setSearchInput}
               />
       <ItemForm customModalStyles={customModalStyles} showItemForm={showItemForm} setShowItemForm={setShowItemForm}/>
       <LoginForm customModalStyles={customModalStyles} showLogin={showLogin} setShowLogin={setShowLogin}/>
@@ -68,7 +70,7 @@ function App() {
             <HomePage />
         </Route>
         <Route path="/search">
-            <Search />
+            <Search searchInput={searchInput} setSearchInput={setSearchInput}/>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Map from '../Map';
 import Post from '../Post'
@@ -11,7 +11,7 @@ const Search = ({ searchInput }) => {
     const dispatch = useDispatch()
     const optionsList = ['Houses','Bikes', 'Games', 'Motorcycles', 'Tools', 'Party Supplies', 'Camping Gear', 'Fitness Equipment/Spots', 'Others']
     const [filteredBy, setFilteredBy] = useState([])
-    const [cate, setCate] = useState(optionsList[0])
+    // const [cate, setCate] = useState(optionsList[0])
     const [showList, setShowList] = useState(false)
     const [showPrice, setShowPrice] = useState(false)
     const [detectChange, setDetectChange] = useState(false)
@@ -36,6 +36,7 @@ const Search = ({ searchInput }) => {
         }
     }, [detectChange, price])
 
+
     return (
         <div className="Search__container">
             <div className="Search__bigResContainer">
@@ -55,7 +56,10 @@ const Search = ({ searchInput }) => {
                             <div>
                                 <button
                                     className="Search__labelsDiv"
-                                    onClick={() => setShowPrice(!showPrice)}>
+                                    onClick={() =>{
+                                    setShowPrice(!showPrice)
+                                    setPrice(0)
+                                    }}>
                                     <label>Price</label>
                                 </button>
                             </div>

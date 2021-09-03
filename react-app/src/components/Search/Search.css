@@ -25,16 +25,55 @@
 }
 
 .Search__labelsDiv {
-    font-size: 16px;
-    font-weight: 500;
+    min-width: 130px;
+    min-height: 36px;
+    font-size: 14px;
+    font-weight: 300;
     font-family: sans-serif;
+    line-height: 18px;
     margin: 5px;
-    color: rgb(121, 117, 117);
+    color: rgb(65, 62, 62);
+    border-radius: 30px;
+    border: solid 0.6px rgb(197, 196, 196);
+    padding: 7px 16px;
+    background-color: transparent;
+}
+.Search__labelsDiv:hover {
+    border: solid 0.6px rgb(75, 72, 72);
 }
 .Search__rangeDiv {
     position: relative;
     width: 190px;
     display: flex;
+}
+.Search__typesDiv {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 350px;
+    /* background-color: rgb(206, 202, 202); */
+    padding: 10px;
+    border-radius: 20px;
+    border: solid 0.6px rgb(197, 196, 196);
+    box-shadow: -0.5px 0.5px 10px 1px rgba(0,0,0,0.2);
+
+}
+.Search__typesDiv div {
+    display: flex;
+    align-items: center;
+}
+.Search__typesDiv input {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.Search__typesDiv label {
+    font-size: 17px;
+    line-height: 1.43;
+    margin: 4px 15px;
+    color: rgb(90, 87, 87);
+    font-weight: 500;
 }
 /* .Search__filterBigContainer {
     width: 100%;

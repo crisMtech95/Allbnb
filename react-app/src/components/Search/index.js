@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Map from '../Map';
 import Post from '../Post'
 import "./Search.css"
 import { getSearch, getSearchThunk } from '../../store/search';
 
-const Search = ({ setSearchInput, searchInput }) => {
+const Search = ({ searchInput }) => {
     const searchRes = useSelector(state => Object.values(state.search))
     // const searchRes = useSelector(state => state.searchRes)
     const dispatch = useDispatch()
@@ -14,22 +13,34 @@ const Search = ({ setSearchInput, searchInput }) => {
     const [filteredBy, setFilteredBy] = useState([])
     const [cate, setCate] = useState(optionsList[0])
     const [showList, setShowList] = useState(false)
+    const [showPrice, setShowPrice] = useState(false)
     const [detectChange, setDetectChange] = useState(false)
+    const [price, setPrice] = useState(0)
 
     useEffect(async() => {
-        console.log(filteredBy)
+        // console.log(filteredBy)
        let result =  await dispatch(getSearchThunk({"city": searchInput}))
 
-        if (filteredBy.length) {
-            console.log(searchInput)
-            console.log("THIS IS THE TYPE VALUES TO FILTER", filteredBy)
-            let filtered = result.search.filter(el => filteredBy.includes(el.category.type))
+       if (filteredBy.length && price > 0) {
+           // console.log("THIS IS THE RESULT", result)
+           let filtered = result.search.filter(el => el.price <= price && filteredBy.includes(el.category.type))
+           console.log("THIS IS THE FILTERED LIST", filtered)
+           await dispatch(getSearch({"search": filtered }))
+        } else if (filteredBy.length) {
+           // console.log(searchInput)
+           console.log("THIS IS THE TYPE VALUES TO FILTER", filteredBy)
+           let filtered = result.search.filter(el => filteredBy.includes(el.category.type))
+           // console.log("THIS IS THE FILTERED LIST", filtered)
+           await dispatch(getSearch({"search": filtered }))
+       } else if (price > 0) {
+            // console.log("THIS IS THE RESULT", result)
+            let filtered = result.search.filter(el => el.price <= price)
             console.log("THIS IS THE FILTERED LIST", filtered)
             await dispatch(getSearch({"search": filtered }))
         } else {
             await dispatch(getSearchThunk({"city": searchInput}))
         }
-    }, [detectChange])
+    }, [detectChange, price])
 
     return (
         <div className="Search__container">
@@ -38,14 +49,43 @@ const Search = ({ setSearchInput, searchInput }) => {
                     <h2>Search Results:</h2>
                 </div>
                 <div className="Search__resContainer">
-                <button
-                    className="Search__labelsDiv"
-                    onClick={() => setShowList(!showList)}>
-                    <label>category</label>
-                </button>
+                    <div className="Search__filterContainer">
+                        <div>
+                            <button
+                                className="Search__labelsDiv"
+                                onClick={() => setShowList(!showList)}>
+                                <label>category</label>
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                className="Search__labelsDiv"
+                                onClick={() => setShowPrice(!showPrice)}>
+                                <label>Price</label>
+                            </button>
+                        </div>
+                        {showPrice &&
+                            <div className="Search__rangeDiv">
+                                <div className="Search__currentPrice">${price}</div>
+                                <p>$0</p>
+                                <input
+                                    type="range"
+                                    min={0}
+                                    max={1000}
+                                    step={10}
+                                    value={price}
+                                    onChange={(e) => {
+                                        console.log(price)
+                                        setPrice(e.target.value)
+                                        console.log(price)
+                                    }}
+                                    ></input>
+                                    <p>$1000</p>
+                            </div>
+                        }
+                    </div>
                 {showList &&
                 <div className="Search__typesDiv">
-                    {/* <select value={cate} onChange={(e) => setCate(e.target.value)} required> */}
                     {optionsList.map((el, i) => (
                         <div key={i}>
                             <input type="checkbox" value={el}
@@ -67,7 +107,6 @@ const Search = ({ setSearchInput, searchInput }) => {
                             <label>{el}</label>
                         </div>
                     ))}
-                    {/* </select> */}
                 </div>}
                     {searchRes.length > 0 ?
                         searchRes.map(post => {

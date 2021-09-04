@@ -40,9 +40,9 @@ function Post({ post }) {
                                     onClick={() => setShowEditModal(!showEditModal)}
                                 >Edit Post</button>
                                 <button onClick={() => dispatch(delPostThunk(post))}>Delete</button>
-                                {showEditModal && <EditPost post={post} setShowEditMenu={setShowEditMenu}/>}
                             </div>
                         }
+                        {showEditModal && <EditPost post={post} setShowEditModal={setShowEditModal}/>}
                     </div>
                 }
                 <Link to={`/posts/${post.id}`}>

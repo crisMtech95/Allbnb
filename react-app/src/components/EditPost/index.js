@@ -5,11 +5,11 @@ import Modal from 'react-modal'
 import { editPostThunk } from '../../store/post';
 // import "./EditPost.css"
 
-const EditPost = ({ post, setShowEditMenu }) => {
+const EditPost = ({ post, setShowEditModal}) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(true)
   const [errors, setErrors] = useState([]);
-  const [title, setTitle] = useState("")
+  const [title, setTitle] = useState(post.title)
   const [address, setAddress] = useState(post.address);
   const [city, setCity] = useState(post.city);
   const [state, setState] = useState(post.state);
@@ -38,7 +38,7 @@ const EditPost = ({ post, setShowEditMenu }) => {
       content: content
     }
     dispatch(editPostThunk(obj))
-    setShowEditMenu(false)
+    setShowEditModal(false)
   };
 
   const customModalStyles = {

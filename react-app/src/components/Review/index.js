@@ -31,7 +31,7 @@ function Review({ review }) {
 
     useEffect(() => {
         const clickOutSide = (e) => {
-            if (!editReviewRef?.current?.contains(e.target)) {
+            if (!editReviewRef?.current?.contains(e.target) && !focusTextarea?.current?.contains(e.target)) {
                 setShowEditReview(false)
                 setShowEditBtn(false)
             }

@@ -33,7 +33,7 @@ function Review({ review }) {
         const clickOutSide = (e) => {
             if (!editReviewRef?.current?.contains(e.target) && !focusTextarea?.current?.contains(e.target)) {
                 setShowEditReview(false)
-                setShowEditBtn(false)
+                // setShowEditBtn(false)
             }
         }
         document.addEventListener("mousedown", clickOutSide)

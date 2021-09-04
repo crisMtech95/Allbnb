@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     content = db.Column(db.String(1000))
-    leaser = db.Column(db.Boolean(), nullable=False, default=False)
+    leaser = db.Column(db.Boolean(), default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     post = db.relationship("Post", back_populates="user")

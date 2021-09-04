@@ -72,7 +72,12 @@ const NavBar = ({setShowLogin, setShowSignup, setShowItemForm, searchInput, setS
             {sessionUser ?
             <div className="navBar__sessionUserDiv">
               <div className="navBar__sessionUserImgDiv"><div className="navBar__sessionUserImg"/></div>
-              <div className="navBar__sessionUserImgDiv"><img src={sessionUser.imageUrl}/></div>
+              <div className="navBar__sessionUserImgDiv">
+                  {sessionUser.imageUrl ?
+                    <img src={sessionUser.imageUrl}/> :
+                    <div className={"navBar__userIconBlue navBar__userIcon3"} />
+                  }
+                </div>
             </div> :
 
             <div className={location.pathname === "/" || location.pathname.startsWith("/users") ? "navBar__userIconWhite navBar__userIcon" : "navBar__userIconBlue navBar__userIcon"} />

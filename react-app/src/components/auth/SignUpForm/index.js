@@ -9,6 +9,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
   const [fullName, setFullName] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [leaser, setLeaser] = useState(false)
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -17,7 +18,7 @@ const SignUpForm = ({ showSignup, setShowSignup, customModalStyles}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, fullName));
+      const data = await dispatch(signUp(username, email, password, fullName, leaser));
       if (data) {
         console.log("THIS IS THE DATA", data)
         setErrors(data)

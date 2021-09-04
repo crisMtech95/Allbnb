@@ -83,6 +83,12 @@
     background-repeat: no-repeat;
     /* margin-top: 12px; */
 }
+.navBar__userIcon3 {
+    width: 30px;
+    height: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 .navBar__userIconWhite {
     background-image: url("../../icons/userwhite.svg");
 }

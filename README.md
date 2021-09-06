@@ -1,5 +1,5 @@
 
-## Allbnb
+# Allbnb
 
-# What is Allbnb?
+## What is Allbnb?
 

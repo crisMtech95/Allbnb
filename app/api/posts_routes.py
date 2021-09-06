@@ -34,7 +34,7 @@ def del_post():
     post = Post.query.get(request.json['id'])
     db.session.delete(post)
     db.session.commit()
-    return {"id": post.to_dict()['id']}
+    return {"id": request.json['id']}
 
 
 @posts_routes.route('', methods=["POST"])

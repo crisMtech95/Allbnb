@@ -31,7 +31,7 @@
  
  ## Images
  
-  Images also have Crud functionality, user's have the ability to see, add and delete the images for every post they themselves have created. 
+  Images also have Crud functionality, user's have the ability to see images for every post and add and delete the images for every post they themselves have created. 
   
  ## Reservations
  

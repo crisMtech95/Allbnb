@@ -46,3 +46,6 @@
  The final primary feature is the search feature, which allows users to easily find items on a specific location. It also allows users to filter their search by item types and price range.
  
  
+ # What's next?
+ 
+ I would like to add two new features, first a watch list, where users can store all the items that they might be interested on lending in the future. The second feature would allow users to create a trip, where they can store all the items that they will reserve for a trip and just see all those items in one easy to access place on their profile. 

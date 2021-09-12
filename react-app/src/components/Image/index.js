@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DelImgModal from '../DelImgModal';
 
 export default function Image({ image, ind, post }) {
-    const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const [showDelModal, setShowDelModal] = useState(false)
 

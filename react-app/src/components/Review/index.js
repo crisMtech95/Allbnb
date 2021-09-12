@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from 'react-rating-stars-component'
 import './Review.css'

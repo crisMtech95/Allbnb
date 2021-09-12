@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { getSearchThunk } from '../../store/search';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import Modal from 'react-modal'
 import { delImageThunk } from "../../store/images";

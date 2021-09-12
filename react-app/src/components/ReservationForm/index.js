@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import  Calendar from 'react-calendar'
 import {  addResThunk } from '../../store/reservations'

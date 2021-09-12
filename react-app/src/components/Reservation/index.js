@@ -6,12 +6,7 @@ import Modal from 'react-modal'
 import CanResModal from '../CancelResModal';
 
 export default function Reservation({ reservation }) {
-    const dispatch = useDispatch()
-    const { userId }  = useParams();
     const [showDelResModal, setShowDelResModal] = useState(false)
-    // useEffect(async() => {
-
-    // }, [])
 
     return (
     <div className="reservation__mainContainer">

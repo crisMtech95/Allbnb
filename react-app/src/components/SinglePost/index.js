@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReservationForm from '../ReservationForm';
 import { getReservationsThunk } from '../../store/reservations';
-import reviewsReducer, { getReviewsThunk } from '../../store/reviews';
+import { getReviewsThunk } from '../../store/reviews';
 import { getSinglePostThunk } from '../../store/post';
 import { getImagesThunk } from '../../store/images';
 import Review from '../Review'
@@ -12,16 +12,13 @@ import Map from '../Map';
 import ReactStars from 'react-rating-stars-component';
 import { addReviewThunk } from '../../store/reviews'
 import AddImg from '../AddImg';
-import Modal from 'react-modal'
-import { delImageThunk } from '../../store/images'
 import Image from '../Image';
-import DelImgModal from '../DelImgModal';
 
 function SinglePost() {
     const dispatch = useDispatch()
     const [starsCount, setStarsCount] = useState(0)
     const [showAddImgModal, setShowAddImgModal] = useState(false)
-    const [showDelModal, setShowDelModal] = useState(false)
+    // const [showDelModal, setShowDelModal] = useState(false)
     const sessionUser = useSelector(state => state.session.user)
     const reviewsList = useSelector(state => Object.values(state.reviews))
     const imagesList = useSelector(state => Object.values(state.images))
@@ -196,4 +193,3 @@ function SinglePost() {
     );
 }
 export default SinglePost;
-

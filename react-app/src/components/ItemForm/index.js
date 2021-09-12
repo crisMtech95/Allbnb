@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { addPostThunk } from '../../store/post'
 import Modal from "react-modal"
 import "./ItemForm.css"

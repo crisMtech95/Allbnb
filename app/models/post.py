@@ -1,9 +1,11 @@
 from sqlalchemy.sql.schema import ForeignKey
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class Post(db.Model):
     __tablename__ = 'posts'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
@@ -14,8 +16,8 @@ class Post(db.Model):
     lat = db.Column(db.Integer)
     lng = db.Column(db.Integer)
     content = db.Column(db.String(1000))
-    userId = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
-    categoryId = db.Column(db.Integer, ForeignKey("categories.id"), nullable=False)
+    userId = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    categoryId = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("categories.id")), nullable=False)
 
     reviews = db.relationship("Review", cascade="all, delete-orphan", back_populates="post")
     user = db.relationship("User", back_populates="post")
@@ -45,6 +47,8 @@ class Post(db.Model):
 
 class Category(db.Model):
     __tablename__ = 'categories'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(50), nullable=False)
@@ -61,10 +65,12 @@ class Category(db.Model):
 
 class Image(db.Model):
     __tablename__ = 'images'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     imageUrl = db.Column(db.String(3000), nullable=False)
-    postId = db.Column(db.Integer, ForeignKey("posts.id"), nullable=False)
+    postId = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("posts.id")), nullable=False)
 
     post = db.relationship("Post", back_populates="image")
 
@@ -78,12 +84,14 @@ class Image(db.Model):
 
 class Reservation(db.Model):
     __tablename__ = 'reservations'
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     startTime = db.Column(db.String(), nullable=False)
     endTime = db.Column(db.String(), nullable=False)
-    userId = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
-    postId = db.Column(db.Integer, ForeignKey("posts.id"), nullable=False)
+    userId = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    postId = db.Column(db.Integer, ForeignKey(add_prefix_for_prod("posts.id")), nullable=False)
 
     user = db.relationship("User", back_populates="reservation")
     post = db.relationship("Post", back_populates="reservation")

@@ -2,7 +2,6 @@ const GET_POSTIMAGES = "get/postimages"
 const ADD_IMAGES = "add/images"
 const DEL_IMAGES = "del/images"
 
-
 export const getPostImages = (payload) => {
     return {
         type: GET_POSTIMAGES,
